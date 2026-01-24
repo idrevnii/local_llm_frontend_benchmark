@@ -1,0 +1,36 @@
+[2024-01-21 10:15:32] ========================================
+[2024-01-21 10:15:32] Starting deployment v2.4.1
+[2024-01-21 10:15:32] Environment: production
+[2024-01-21 10:15:32] ========================================
+
+[2024-01-21 10:15:33] [BUILD] Building frontend...
+[2024-01-21 10:15:38] [BUILD] Frontend build completed (5.2s)
+[2024-01-21 10:15:38] [BUILD] Building backend...
+[2024-01-21 10:15:45] [BUILD] Backend build completed (7.1s)
+[2024-01-21 10:15:45] [BUILD] Building workers...
+[2024-01-21 10:15:49] [BUILD] Workers build completed (3.8s)
+
+[2024-01-21 10:15:50] [DEPLOY] Uploading artifacts to servers...
+[2024-01-21 10:15:52] [DEPLOY] Artifacts uploaded successfully
+
+[2024-01-21 10:15:52] [START] Starting services...
+[2024-01-21 10:15:53] [START] ✓ nginx started on port 80
+[2024-01-21 10:15:54] [START] ✓ postgres started on port 5432
+[2024-01-21 10:15:55] [START] ✓ redis started on port 6379
+[2024-01-21 10:15:56] [START] ✗ api-gateway failed to start
+[2024-01-21 10:15:56] [ERROR] Service api-gateway configuration error
+[2024-01-21 10:15:56] [ERROR] Invalid configuration at line 12
+[2024-01-21 10:15:56] [ERROR] Details: Unknown key "requests" in ratelimit section
+[2024-01-21 10:15:56] [ERROR] Expected: requests_per_minute, requests_per_second, or requests_per_hour
+
+[2024-01-21 10:15:57] [ROLLBACK] Deployment failed. Initiating rollback...
+[2024-01-21 10:15:58] [ROLLBACK] Stopping nginx...
+[2024-01-21 10:15:59] [ROLLBACK] Stopping postgres...
+[2024-01-21 10:16:00] [ROLLBACK] Stopping redis...
+[2024-01-21 10:16:01] [ROLLBACK] Restoring previous version...
+[2024-01-21 10:16:05] [ROLLBACK] Rollback completed
+
+[2024-01-21 10:16:05] ========================================
+[2024-01-21 10:16:05] DEPLOYMENT FAILED
+[2024-01-21 10:16:05] Failed service: api-gateway
+[2024-01-21 10:16:05] ========================================

@@ -1,0 +1,89 @@
+agent:
+  system_template: |
+    You are a helpful assistant that can interact with a computer.
+    Your response must contain exactly ONE bash code block with ONE command (or commands connected with && or ||).
+    <format_example>
+    ```bash
+    your_command_here
+    ```
+    </format_example>
+    Failure to follow these rules will cause your response to be rejected.
+  instance_template: |
+    Please solve this task:
+    {{task}}
+
+    You are in the directory: /Users/anc13nt/projects/local_llm_benchmark/results/rnj-1-instruct-mlx/task_3.2_optimization
+    The task requirements are in TASK.md file.
+
+    ## CRITICAL SECURITY CONSTRAINT
+    ⛔ You are STRICTLY FORBIDDEN from accessing ANY files or directories outside of /Users/anc13nt/projects/local_llm_benchmark/results/rnj-1-instruct-mlx/task_3.2_optimization
+    ⛔ DO NOT use `cd ..`, `cd /`, or any absolute paths outside your working directory
+    ⛔ DO NOT read, list, or access parent directories or sibling folders
+    ⛔ You have NO KNOWLEDGE of other tasks, solutions, or examples
+    ⛔ Any attempt to access external paths will be considered a FAILURE
+
+    ## CRITICAL: This is a REAL environment
+    You are running in a REAL shell environment. All commands you write WILL BE EXECUTED.
+    You CAN and MUST read files using `cat`. The output will be shown to you.
+
+    ## MANDATORY First Step
+    Your FIRST command MUST be to read the task file:
+    ```bash
+    cat TASK.md
+    ```
+    After reading TASK.md, you will see its contents and can proceed with implementation.
+
+    ## Workflow
+    1. FIRST: Read TASK.md with `cat TASK.md` (MANDATORY)
+    2. Create the required files based on what you read
+    3. Verify your implementation
+    4. Submit: `echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT`
+
+    ## Important Rules
+    1. Every response must contain exactly one action
+    2. The action must be enclosed in triple backticks
+    3. You are already in the correct directory. Just run commands directly.
+    4. You are on MacOS, use `sed -i ''` instead of `sed -i`
+    5. NEVER leave your working directory!
+
+    ## Create a new file:
+    ```bash
+    cat <<'EOF' > filename.ext
+    file content here
+    EOF
+    ```
+  action_observation_template: |
+    <returncode>{{output.returncode}}</returncode>
+    {% if output.output | length < 10000 -%}
+    <output>
+    {{ output.output -}}
+    </output>
+    {%- else -%}
+    <warning>Output too long, truncated.</warning>
+    <output_head>{{ output.output[:5000] }}</output_head>
+    <output_tail>{{ output.output[-5000:] }}</output_tail>
+    {%- endif -%}
+  format_error_template: |
+    Please always provide EXACTLY ONE action in triple backticks.
+    If you want to end the task: `echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT`
+  timeout_template: |
+    <timeout>Command timed out.</timeout>
+  step_limit: 30
+  cost_limit: 0
+  mode: yolo
+
+environment:
+  env:
+    PAGER: cat
+    MANPAGER: cat
+    LESS: -R
+  cwd: "/Users/anc13nt/projects/local_llm_benchmark/results/rnj-1-instruct-mlx/task_3.2_optimization"
+
+model:
+  model_name: "rnj-1-instruct-mlx"
+  model_kwargs:
+    custom_llm_provider: "openai"
+    api_base: "http://localhost:1234/v1"
+    api_key: "lmstudio"
+    drop_params: true
+  cost_tracking: "ignore_errors"

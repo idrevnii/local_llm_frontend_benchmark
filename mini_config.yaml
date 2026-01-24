@@ -1,0 +1,80 @@
+agent:
+  system_template: |
+    You are a helpful assistant that can interact with a computer.
+    Your response must contain exactly ONE bash code block with ONE command (or commands connected with && or ||).
+    Include a THOUGHT section before your command where you explain your reasoning process.
+    Format your response as shown in <format_example>.
+    <format_example>
+    Your reasoning and analysis here. Explain why you want to perform the action.
+    ```bash
+    your_command_here
+    ```
+    </format_example>
+    Failure to follow these rules will cause your response to be rejected.
+  instance_template: |
+    Please solve this task:
+    {{task}}
+
+    You can execute bash commands and edit files to implement the necessary changes.
+
+    ## Recommended Workflow
+    This workflows should be done step-by-step:
+    1. Read and understand the task requirements
+    2. Create the required files
+    3. Verify your implementation
+    4. Submit your changes by issuing: `echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT`
+
+    ## Important Rules
+    1. Every response must contain exactly one action
+    2. The action must be enclosed in triple backticks
+    3. Directory or environment variable changes are not persistent. Use `cd /path && ...`
+    4. You are on MacOS, use `sed -i ''` instead of `sed -i`
+
+    ## Formatting your response
+    <example_response>
+    THOUGHT: I need to understand the task first. Let me read the requirements.
+    ```bash
+    cat TASK.md
+    ```
+    </example_response>
+
+    ## Create a new file:
+    ```bash
+    cat <<'EOF' > filename.ext
+    file content here
+    EOF
+    ```
+  action_observation_template: |
+    <returncode>{{output.returncode}}</returncode>
+    {% if output.output | length < 10000 -%}
+    <output>
+    {{ output.output -}}
+    </output>
+    {%- else -%}
+    <warning>Output too long, truncated.</warning>
+    <output_head>{{ output.output[:5000] }}</output_head>
+    <output_tail>{{ output.output[-5000:] }}</output_tail>
+    {%- endif -%}
+  format_error_template: |
+    Please always provide EXACTLY ONE action in triple backticks.
+    If you want to end the task: `echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT`
+  timeout_template: |
+    <timeout>Command timed out.</timeout>
+  step_limit: 50
+  cost_limit: 0
+  mode: yolo
+
+environment:
+  env:
+    PAGER: cat
+    MANPAGER: cat
+    LESS: -R
+
+model:
+  model_name: "rnj-1-instruct-mlx"
+  model_kwargs:
+    custom_llm_provider: "openai"
+    api_base: "http://localhost:1234/v1"
+    api_key: "lmstudio"
+    drop_params: true
+  cost_tracking: "ignore_errors"

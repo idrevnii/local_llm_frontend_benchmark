@@ -1,0 +1,5 @@
+# Nginx Configuration
+service:
+  name: nginx
+  port: 80
+  ssl_port: 443

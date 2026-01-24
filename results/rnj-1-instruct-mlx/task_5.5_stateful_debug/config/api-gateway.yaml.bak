@@ -1,0 +1,44 @@
+# API Gateway Configuration
+# Last modified: 2024-01-18 by senior-dev
+
+service:
+  name: api-gateway
+  port: 8080
+  workers: 4
+  
+routes:
+  - path: /api/v1/*
+    upstream: backend:3000
+    methods: [GET, POST, PUT, DELETE]
+    
+  - path: /api/v2/*
+    upstream: backend:3001
+    timeout: 30s
+    methods: [GET, POST, PUT, DELETE, PATCH]
+    
+  - path: /health
+    upstream: backend:3000
+    methods: [GET]
+
+ratelimit:
+  enabled: true
+  requests_per_minute: 100
+  burst: 20
+  
+cors:
+  enabled: true
+  origins:
+    - https://app.example.com
+    - https://admin.example.com
+  methods: [GET, POST, PUT, DELETE, PATCH, OPTIONS]
+  headers: [Content-Type, Authorization, X-Request-ID]
+  
+logging:
+  level: info
+  format: json
+  output: /var/log/api-gateway/access.log
+  
+security:
+  ssl: true
+  certificate: /etc/ssl/certs/api-gateway.crt
+  key: /etc/ssl/private/api-gateway.key

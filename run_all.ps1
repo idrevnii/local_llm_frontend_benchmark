@@ -1,3 +1,7 @@
+param(
+    [string]$Model = "rnj-1-instruct-mlx"
+)
+
 <#
 .SYNOPSIS
     Run mini-swe-agent on ALL tasks (Windows PowerShell version)
@@ -6,10 +10,6 @@
     Example: .\run_all.ps1 qwen3-4b-thinking-2507
     Results are saved to: results/<model>/<task_folder>/
 #>
-param(
-    [Parameter(Position=0)]
-    [string]$Model = "rnj-1-instruct-mlx"
-)
 
 # Fix Unicode encoding for Windows console
 $env:PYTHONIOENCODING = "utf-8"

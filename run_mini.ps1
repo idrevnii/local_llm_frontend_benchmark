@@ -26,7 +26,7 @@ $SourceTaskDir = Join-Path $SandboxDir $TaskFolder
 
 # Results directory: results/<model>/<task>/
 $ResultsBase = Join-Path $BaseDir "results"
-$ResultsDir = Join-Path $ResultsBase $Model $TaskFolder
+$ResultsDir = Join-Path (Join-Path $ResultsBase $Model) $TaskFolder
 
 if (-not $TaskFolder) {
     Write-Host "Usage: .\run_mini.ps1 <task_folder> [model]"

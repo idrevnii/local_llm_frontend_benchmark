@@ -62,7 +62,7 @@ foreach ($Task in $Tasks) {
     }
     
     # Clean up cache directories from results
-    $ResultsDir = Join-Path $BaseDir "results" $Model $TaskName
+    $ResultsDir = Join-Path (Join-Path (Join-Path $BaseDir "results") $Model) $TaskName
     
     $CacheDirs = @(".cache", ".uv-cache")
     foreach ($CacheDir in $CacheDirs) {

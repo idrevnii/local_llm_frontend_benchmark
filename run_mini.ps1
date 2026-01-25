@@ -199,17 +199,12 @@ try {
     $TrajectoryPath = Join-Path $ResultsDir "trajectory.json"
     
     # Run mini-swe-agent and capture output
-    # Temporarily allow stderr output without treating as error
+    # Use cmd.exe to fix prompt_toolkit console buffer error
     $ErrorActionPreference = "Continue"
     
-    & mini `
-        -c $TaskConfig `
-        -m $Model `
-        -y `
-        -t "Read TASK.md and complete the task. Create the required files in the current directory." `
-        -o $TrajectoryPath `
-        --exit-immediately `
-        2>&1 | Tee-Object -FilePath $LogPath
+    $MiniArgs = "-c `"$TaskConfig`" -m `"$Model`" -y -t `"Read TASK.md and complete the task. Create the required files in the current directory.`" -o `"$TrajectoryPath`" --exit-immediately"
+    
+    cmd /c "mini $MiniArgs" 2>&1 | Tee-Object -FilePath $LogPath
     
     $ErrorActionPreference = "Stop"
     

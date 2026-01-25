@@ -1,9 +1,11 @@
-# Run mini-swe-agent on ALL tasks (Windows PowerShell version)
-# Usage: .\run_all.ps1 [model]
-# Example: .\run_all.ps1 qwen3-4b-thinking-2507
-#
-# Results are saved to: results/<model>/<task_folder>/
-
+<#
+.SYNOPSIS
+    Run mini-swe-agent on ALL tasks (Windows PowerShell version)
+.DESCRIPTION
+    Usage: .\run_all.ps1 [model]
+    Example: .\run_all.ps1 qwen3-4b-thinking-2507
+    Results are saved to: results/<model>/<task_folder>/
+#>
 param(
     [Parameter(Position=0)]
     [string]$Model = "rnj-1-instruct-mlx"
@@ -50,8 +52,8 @@ foreach ($Task in $Tasks) {
     Write-Host "----------------------------------------"
     
     try {
-        # Run the task
-        & $ScriptPath -TaskFolder $TaskName -Model $Model
+        # Run the task (positional arguments)
+        & $ScriptPath $TaskName $Model
         
         $TaskStatus = "SUCCESS"
     } catch {

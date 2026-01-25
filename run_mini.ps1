@@ -1,9 +1,11 @@
-# Run mini-swe-agent in isolated task directory (Windows PowerShell version)
-# Usage: .\run_mini.ps1 <task_folder> [model]
-# Example: .\run_mini.ps1 task_1.1_button rnj-1-instruct-mlx
-#
-# Results are saved to: results/<model>/<task_folder>/
-
+<#
+.SYNOPSIS
+    Run mini-swe-agent in isolated task directory (Windows PowerShell version)
+.DESCRIPTION
+    Usage: .\run_mini.ps1 <task_folder> [model]
+    Example: .\run_mini.ps1 task_1.1_button rnj-1-instruct-mlx
+    Results are saved to: results/<model>/<task_folder>/
+#>
 param(
     [Parameter(Position=0)]
     [string]$TaskFolder,

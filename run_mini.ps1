@@ -199,6 +199,9 @@ try {
     $TrajectoryPath = Join-Path $ResultsDir "trajectory.json"
     
     # Run mini-swe-agent and capture output
+    # Temporarily allow stderr output without treating as error
+    $ErrorActionPreference = "Continue"
+    
     & mini `
         -c $TaskConfig `
         -m $Model `
@@ -207,6 +210,8 @@ try {
         -o $TrajectoryPath `
         --exit-immediately `
         2>&1 | Tee-Object -FilePath $LogPath
+    
+    $ErrorActionPreference = "Stop"
     
 } finally {
     Pop-Location

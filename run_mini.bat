@@ -179,7 +179,8 @@ set "TRAJECTORY_PATH=%RESULTS_DIR%\trajectory.json"
 REM Run mini-swe-agent from the working directory
 pushd "%RESULTS_DIR%"
 
-mini -c "%TASK_CONFIG%" -m "%MODEL%" -y -t "Read TASK.md and complete the task. Create the required files in the current directory." -o "%TRAJECTORY_PATH%" --exit-immediately 2>&1 | tee "%LOG_PATH%"
+mini -c "%TASK_CONFIG%" -m "%MODEL%" -y -t "Read TASK.md and complete the task. Create the required files in the current directory." -o "%TRAJECTORY_PATH%" --exit-immediately > "%LOG_PATH%" 2>&1
+type "%LOG_PATH%"
 
 popd
 

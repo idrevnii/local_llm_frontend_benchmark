@@ -170,7 +170,7 @@ cd "$RESULTS_DIR"
 # Ensure uv/uvx cache stays inside the sandboxed workspace (Codex CLI disallows writing to ~/.cache)
 export XDG_CACHE_HOME="$RESULTS_DIR/.cache"
 export UV_CACHE_DIR="$RESULTS_DIR/.uv-cache"
-MSWEA_COST_TRACKING=ignore_errors uvx mini-swe-agent \
+MSWEA_COST_TRACKING=ignore_errors mini \
   -c "$TASK_CONFIG" \
   -m "$MODEL" \
   -y \

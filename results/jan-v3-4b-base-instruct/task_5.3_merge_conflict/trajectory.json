@@ -1,0 +1,283 @@
+{
+  "info": {
+    "exit_status": "Submitted",
+    "submission": "",
+    "model_stats": {
+      "instance_cost": 0.0,
+      "api_calls": 5
+    },
+    "mini_version": "1.17.4",
+    "config": {
+      "agent": {
+        "system_template": "You are a helpful assistant that can interact with a computer.\nYour response must contain exactly ONE bash code block with ONE command (or commands connected with && or ||).\n\n\u26a0\ufe0f CRITICAL: The code block MUST start with ```bash - NOT just ```\n\n\u274c WRONG (will be rejected):\n```\ncat TASK.md\n```\n\n\u2705 CORRECT:\n```bash\ncat TASK.md\n```\n\nFailure to include \"bash\" after the triple backticks will cause your response to be REJECTED.\nFailure to follow these rules will cause your response to be rejected.\n",
+        "instance_template": "Please solve this task:\n{{task}}\n\nYou are in the directory: /home/ssamozhen/local_llm_frontend_benchmark/results/jan-v3-4b-base-instruct/task_5.3_merge_conflict\nThe task requirements are in TASK.md file.\n\n## CRITICAL SECURITY CONSTRAINT\n\u26d4 You are STRICTLY FORBIDDEN from accessing ANY files or directories outside of /home/ssamozhen/local_llm_frontend_benchmark/results/jan-v3-4b-base-instruct/task_5.3_merge_conflict\n\u26d4 DO NOT use `cd ..`, `cd /`, or any absolute paths outside your working directory\n\u26d4 DO NOT read, list, or access parent directories or sibling folders\n\u26d4 You have NO KNOWLEDGE of other tasks, solutions, or examples\n\u26d4 Any attempt to access external paths will be considered a FAILURE\n\n## CRITICAL: This is a REAL environment\nYou are running in a REAL shell environment. All commands you write WILL BE EXECUTED.\nYou CAN and MUST read files using `cat`. The output will be shown to you.\n\n## MANDATORY First Step\nYour FIRST command MUST be to read the task file:\n```bash\ncat TASK.md\n```\nAfter reading TASK.md, you will see its contents and can proceed with implementation.\n\n## Workflow\n1. FIRST: Read TASK.md with `cat TASK.md` (MANDATORY)\n2. Create the required files based on what you read\n3. Verify your implementation\n4. Submit: `echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT`\n\n## Important Rules\n1. Every response must contain exactly one action\n2. The action must be enclosed in triple backticks\n3. You are already in the correct directory. Just run commands directly.\n4. You are on MacOS, use `sed -i ''` instead of `sed -i`\n5. NEVER leave your working directory!\n\n## Create a new file:\n```bash\ncat <<'EOF' > filename.ext\nfile content here\nEOF\n```\n",
+        "timeout_template": "<timeout>Command timed out.</timeout>\n",
+        "format_error_template": "\u26a0\ufe0f FORMAT ERROR! Your code block was not recognized.\nYou MUST use ```bash (not just ```) at the start of your code block.\nExample: ```bash\ncat TASK.md\n```\nIf you want to end the task: `echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT`\n",
+        "action_observation_template": "<returncode>{{output.returncode}}</returncode>\n{% if output.output | length < 10000 -%}\n<output>\n{{ output.output -}}\n</output>\n{%- else -%}\n<warning>Output too long, truncated.</warning>\n<output_head>{{ output.output[:5000] }}</output_head>\n<output_tail>{{ output.output[-5000:] }}</output_tail>\n{%- endif -%}\n",
+        "action_regex": "```bash\\s*\\n(.*?)\\n```",
+        "step_limit": 30,
+        "cost_limit": 0,
+        "mode": "yolo",
+        "whitelist_actions": [],
+        "confirm_exit": false
+      },
+      "model": {
+        "model_name": "jan-v3-4b-base-instruct",
+        "model_kwargs": {
+          "custom_llm_provider": "openai",
+          "api_base": "http://localhost:1234/v1",
+          "api_key": "lmstudio",
+          "drop_params": true
+        },
+        "litellm_model_registry": null,
+        "set_cache_control": null,
+        "cost_tracking": "ignore_errors"
+      },
+      "environment": {
+        "cwd": "/home/ssamozhen/local_llm_frontend_benchmark/results/jan-v3-4b-base-instruct/task_5.3_merge_conflict",
+        "env": {
+          "PAGER": "cat",
+          "MANPAGER": "cat",
+          "LESS": "-R"
+        },
+        "timeout": 30
+      },
+      "agent_type": "minisweagent.agents.interactive.InteractiveAgent",
+      "model_type": "minisweagent.models.litellm_model.LitellmModel",
+      "environment_type": "minisweagent.environments.local.LocalEnvironment"
+    }
+  },
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant that can interact with a computer.\nYour response must contain exactly ONE bash code block with ONE command (or commands connected with && or ||).\n\n\u26a0\ufe0f CRITICAL: The code block MUST start with ```bash - NOT just ```\n\n\u274c WRONG (will be rejected):\n```\ncat TASK.md\n```\n\n\u2705 CORRECT:\n```bash\ncat TASK.md\n```\n\nFailure to include \"bash\" after the triple backticks will cause your response to be REJECTED.\nFailure to follow these rules will cause your response to be rejected.",
+      "timestamp": 1769533612.6221416
+    },
+    {
+      "role": "user",
+      "content": "Please solve this task:\nRead TASK.md and complete the task. Create the required files in the current directory.\n\nYou are in the directory: /home/ssamozhen/local_llm_frontend_benchmark/results/jan-v3-4b-base-instruct/task_5.3_merge_conflict\nThe task requirements are in TASK.md file.\n\n## CRITICAL SECURITY CONSTRAINT\n\u26d4 You are STRICTLY FORBIDDEN from accessing ANY files or directories outside of /home/ssamozhen/local_llm_frontend_benchmark/results/jan-v3-4b-base-instruct/task_5.3_merge_conflict\n\u26d4 DO NOT use `cd ..`, `cd /`, or any absolute paths outside your working directory\n\u26d4 DO NOT read, list, or access parent directories or sibling folders\n\u26d4 You have NO KNOWLEDGE of other tasks, solutions, or examples\n\u26d4 Any attempt to access external paths will be considered a FAILURE\n\n## CRITICAL: This is a REAL environment\nYou are running in a REAL shell environment. All commands you write WILL BE EXECUTED.\nYou CAN and MUST read files using `cat`. The output will be shown to you.\n\n## MANDATORY First Step\nYour FIRST command MUST be to read the task file:\n```bash\ncat TASK.md\n```\nAfter reading TASK.md, you will see its contents and can proceed with implementation.\n\n## Workflow\n1. FIRST: Read TASK.md with `cat TASK.md` (MANDATORY)\n2. Create the required files based on what you read\n3. Verify your implementation\n4. Submit: `echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT`\n\n## Important Rules\n1. Every response must contain exactly one action\n2. The action must be enclosed in triple backticks\n3. You are already in the correct directory. Just run commands directly.\n4. You are on MacOS, use `sed -i ''` instead of `sed -i`\n5. NEVER leave your working directory!\n\n## Create a new file:\n```bash\ncat <<'EOF' > filename.ext\nfile content here\nEOF\n```",
+      "timestamp": 1769533612.624085
+    },
+    {
+      "role": "assistant",
+      "content": "```bash\ncat TASK.md\n```",
+      "timestamp": 1769533617.264942,
+      "extra": {
+        "response": {
+          "id": "chatcmpl-uvu2u538iyrdyip1rady3",
+          "created": 1769533612,
+          "model": "jan-v3-4b-base-instruct",
+          "object": "chat.completion",
+          "system_fingerprint": "jan-v3-4b-base-instruct",
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "message": {
+                "content": "```bash\ncat TASK.md\n```",
+                "role": "assistant",
+                "tool_calls": null,
+                "function_call": null,
+                "provider_specific_fields": {
+                  "refusal": null
+                }
+              },
+              "provider_specific_fields": {}
+            }
+          ],
+          "usage": {
+            "completion_tokens": 9,
+            "prompt_tokens": 550,
+            "total_tokens": 559,
+            "completion_tokens_details": null,
+            "prompt_tokens_details": null
+          },
+          "service_tier": null,
+          "stats": {}
+        }
+      }
+    },
+    {
+      "role": "user",
+      "content": "<returncode>0</returncode>\n<output>\n# Merge Conflict Resolution\n\n\u041f\u0440\u0438 \u0441\u043b\u0438\u044f\u043d\u0438\u0438 \u0432\u0435\u0442\u043e\u043a `feature/discount-system` \u0438 `feature/loyalty-points` \n\u0432\u043e\u0437\u043d\u0438\u043a \u043a\u043e\u043d\u0444\u043b\u0438\u043a\u0442 \u0432 \u0444\u0430\u0439\u043b\u0435 `src/utils/pricing.ts`.\n\n## \u041a\u043e\u043d\u0442\u0435\u043a\u0441\u0442 \u0432\u0435\u0442\u043e\u043a\n\n### feature/discount-system\n\u0414\u043e\u0431\u0430\u0432\u0438\u043b\u0438 \u0441\u0438\u0441\u0442\u0435\u043c\u0443 \u0441\u043a\u0438\u0434\u043e\u043a (\u043f\u0440\u043e\u0446\u0435\u043d\u0442 \u043e\u0442 \u0446\u0435\u043d\u044b):\n- \u0421\u043a\u0438\u0434\u043a\u0430 \u043f\u0440\u0438\u043c\u0435\u043d\u044f\u0435\u0442\u0441\u044f \u043a \u0431\u0430\u0437\u043e\u0432\u043e\u0439 \u0446\u0435\u043d\u0435\n- \u0421\u043a\u0438\u0434\u043a\u0430 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c 0-100%\n\n### feature/loyalty-points  \n\u0414\u043e\u0431\u0430\u0432\u0438\u043b\u0438 \u0441\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0431\u0430\u043b\u043b\u043e\u0432 \u043b\u043e\u044f\u043b\u044c\u043d\u043e\u0441\u0442\u0438:\n- \u0411\u0430\u043b\u043b\u044b \u043a\u043e\u043d\u0432\u0435\u0440\u0442\u0438\u0440\u0443\u044e\u0442\u0441\u044f 1:1 \u0432 \u0440\u0443\u0431\u043b\u0438\n- \u0415\u0441\u0442\u044c \u0431\u0430\u043b\u0430\u043d\u0441 \u0431\u0430\u043b\u043b\u043e\u0432 \u0443 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f\n\n## \u0411\u0438\u0437\u043d\u0435\u0441-\u0442\u0440\u0435\u0431\u043e\u0432\u0430\u043d\u0438\u044f (\u043e\u0442 Product Manager)\n\n1. \u0421\u043a\u0438\u0434\u043a\u0438 \u043f\u0440\u0438\u043c\u0435\u043d\u044f\u044e\u0442\u0441\u044f \u043a **\u0431\u0430\u0437\u043e\u0432\u043e\u0439 \u0446\u0435\u043d\u0435** (\u0434\u043e \u043b\u044e\u0431\u044b\u0445 \u0434\u0440\u0443\u0433\u0438\u0445 \u0432\u044b\u0447\u0435\u0442\u043e\u0432)\n2. \u0411\u0430\u043b\u043b\u044b \u0441\u043f\u0438\u0441\u044b\u0432\u0430\u044e\u0442\u0441\u044f **\u041f\u041e\u0421\u041b\u0415** \u043f\u0440\u0438\u043c\u0435\u043d\u0435\u043d\u0438\u044f \u0441\u043a\u0438\u0434\u043a\u0438\n3. \u0424\u0438\u043d\u0430\u043b\u044c\u043d\u0430\u044f \u0446\u0435\u043d\u0430 **\u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043c\u0435\u043d\u044c\u0448\u0435 0**\n4. \u0411\u0430\u043b\u043b\u044b \u043a\u043e\u043d\u0432\u0435\u0440\u0442\u0438\u0440\u0443\u044e\u0442\u0441\u044f **1:1** \u0432 \u0440\u0443\u0431\u043b\u0438\n5. \u041d\u0435\u043b\u044c\u0437\u044f \u0441\u043f\u0438\u0441\u0430\u0442\u044c \u0431\u0430\u043b\u043b\u043e\u0432 **\u0431\u043e\u043b\u044c\u0448\u0435, \u0447\u0435\u043c \u0435\u0441\u0442\u044c** \u0443 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f\n6. \u041d\u0435\u043b\u044c\u0437\u044f \u0441\u043f\u0438\u0441\u0430\u0442\u044c \u0431\u0430\u043b\u043b\u043e\u0432 **\u0431\u043e\u043b\u044c\u0448\u0435, \u0447\u0435\u043c 50%** \u043e\u0442 \u0446\u0435\u043d\u044b \u043f\u043e\u0441\u043b\u0435 \u0441\u043a\u0438\u0434\u043a\u0438\n\n## \u0422\u0432\u043e\u044f \u0437\u0430\u0434\u0430\u0447\u0430\n\n1. \u041f\u043e\u0441\u043c\u043e\u0442\u0440\u0438 \u0444\u0430\u0439\u043b `src/utils/pricing.ts` \u2014 \u0442\u0430\u043c git merge conflict\n2. \u0420\u0430\u0437\u0440\u0435\u0448\u0438 \u043a\u043e\u043d\u0444\u043b\u0438\u043a\u0442, **\u043e\u0431\u044a\u0435\u0434\u0438\u043d\u0438\u0432 \u0444\u0443\u043d\u043a\u0446\u0438\u043e\u043d\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u044c \u043e\u0431\u0435\u0438\u0445 \u0432\u0435\u0442\u043e\u043a**\n3. \u0423\u0447\u0442\u0438 **\u0412\u0421\u0415 6 \u0431\u0438\u0437\u043d\u0435\u0441-\u0442\u0440\u0435\u0431\u043e\u0432\u0430\u043d\u0438\u0439**\n4. \u041e\u0431\u043d\u043e\u0432\u0438 return type, \u0447\u0442\u043e\u0431\u044b \u043e\u043d \u0441\u043e\u0434\u0435\u0440\u0436\u0430\u043b \u0432\u0441\u044e \u043d\u0443\u0436\u043d\u0443\u044e \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044e \u0434\u043b\u044f UI\n5. \u041e\u0431\u044a\u044f\u0441\u043d\u0438 \u0441\u0432\u043e\u0451 \u0440\u0435\u0448\u0435\u043d\u0438\u0435\n</output>",
+      "timestamp": 1769533617.2750943
+    },
+    {
+      "role": "assistant",
+      "content": "```bash\ncat src/utils/pricing.ts\n```",
+      "timestamp": 1769533622.369913,
+      "extra": {
+        "response": {
+          "id": "chatcmpl-zsjiycd19hjeqcaemrrqih",
+          "created": 1769533617,
+          "model": "jan-v3-4b-base-instruct",
+          "object": "chat.completion",
+          "system_fingerprint": "jan-v3-4b-base-instruct",
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "message": {
+                "content": "```bash\ncat src/utils/pricing.ts\n```",
+                "role": "assistant",
+                "tool_calls": null,
+                "function_call": null,
+                "provider_specific_fields": {
+                  "refusal": null
+                }
+              },
+              "provider_specific_fields": {}
+            }
+          ],
+          "usage": {
+            "completion_tokens": 12,
+            "prompt_tokens": 972,
+            "total_tokens": 984,
+            "completion_tokens_details": null,
+            "prompt_tokens_details": null
+          },
+          "service_tier": null,
+          "stats": {}
+        }
+      }
+    },
+    {
+      "role": "user",
+      "content": "<returncode>0</returncode>\n<output>\n// src/utils/pricing.ts\n// Git merge conflict - \u0440\u0430\u0437\u0440\u0435\u0448\u0438 \u0435\u0433\u043e!\n\ninterface PricingInput {\n    basePrice: number;\n<<<<<<< HEAD (feature/discount-system)\n    discountPercent?: number;\n}\n\n/**\n * Calculate final price with discount\n */\nexport function calculateFinalPrice(input: PricingInput): number {\n    let price = input.basePrice;\n\n    // Apply percentage discount\n    if (input.discountPercent && input.discountPercent > 0) {\n        const discount = price * (input.discountPercent / 100);\n        price = price - discount;\n    }\n\n    // Price cannot be negative\n    return Math.max(price, 0);\n=======\n  loyaltyPoints?: number;\n  userPointsBalance?: number;\n}\n\ninterface PricingResult {\n  finalPrice: number;\n  pointsUsed: number;\n}\n\n/**\n * Calculate final price with loyalty points redemption\n */\nexport function calculateFinalPrice(input: PricingInput): PricingResult {\n  let price = input.basePrice;\n  let pointsUsed = 0;\n\n  // Redeem loyalty points (1 point = 1 ruble)\n  if (input.loyaltyPoints && input.loyaltyPoints > 0 && input.userPointsBalance) {\n    // Cannot use more points than user has\n    const maxPoints = Math.min(input.loyaltyPoints, input.userPointsBalance);\n    // Cannot reduce price below 0\n    pointsUsed = Math.min(maxPoints, price);\n    price = price - pointsUsed;\n  }\n\n  return {\n    finalPrice: Math.max(price, 0),\n    pointsUsed\n  };\n>>>>>>> feature/loyalty-points\n}\n</output>",
+      "timestamp": 1769533622.378765
+    },
+    {
+      "role": "assistant",
+      "content": "```bash\ncat <<'EOF' > src/utils/pricing.ts\ninterface PricingInput {\n    basePrice: number;\n    discountPercent?: number;\n    loyaltyPoints?: number;\n    userPointsBalance?: number;\n}\n\ninterface PricingResult {\n  finalPrice: number;\n  pointsUsed: number;\n}\n\n/**\n * Calculate final price with discount and loyalty points redemption\n */\nexport function calculateFinalPrice(input: PricingInput): PricingResult {\n  let price = input.basePrice;\n  let pointsUsed = 0;\n\n  // Apply percentage discount first (to base price)\n  if (input.discountPercent !== undefined && input.discountPercent > 0) {\n    const discount = price * (input.discountPercent / 100);\n    price = price - discount;\n  }\n\n  // Price cannot be negative after any operations\n  price = Math.max(price, 0);\n\n  // Redeem loyalty points (1 point = 1 ruble)\n  if (input.loyaltyPoints !== undefined && input.loyaltyPoints > 0 && input.userPointsBalance !== undefined) {\n    // Cannot use more points than user has\n    const maxPoints = Math.min(input.loyaltyPoints, input.userPointsBalance);\n    // Cannot reduce price below 0\n    pointsUsed = Math.min(maxPoints, price);\n    price = price - pointsUsed;\n  }\n\n  return {\n    finalPrice: Math.max(price, 0),\n    pointsUsed\n  };\n}\nEOF\n```",
+      "timestamp": 1769533667.4753423,
+      "extra": {
+        "response": {
+          "id": "chatcmpl-2n6c83sirx6u563k2m81w",
+          "created": 1769533622,
+          "model": "jan-v3-4b-base-instruct",
+          "object": "chat.completion",
+          "system_fingerprint": "jan-v3-4b-base-instruct",
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "message": {
+                "content": "```bash\ncat <<'EOF' > src/utils/pricing.ts\ninterface PricingInput {\n    basePrice: number;\n    discountPercent?: number;\n    loyaltyPoints?: number;\n    userPointsBalance?: number;\n}\n\ninterface PricingResult {\n  finalPrice: number;\n  pointsUsed: number;\n}\n\n/**\n * Calculate final price with discount and loyalty points redemption\n */\nexport function calculateFinalPrice(input: PricingInput): PricingResult {\n  let price = input.basePrice;\n  let pointsUsed = 0;\n\n  // Apply percentage discount first (to base price)\n  if (input.discountPercent !== undefined && input.discountPercent > 0) {\n    const discount = price * (input.discountPercent / 100);\n    price = price - discount;\n  }\n\n  // Price cannot be negative after any operations\n  price = Math.max(price, 0);\n\n  // Redeem loyalty points (1 point = 1 ruble)\n  if (input.loyaltyPoints !== undefined && input.loyaltyPoints > 0 && input.userPointsBalance !== undefined) {\n    // Cannot use more points than user has\n    const maxPoints = Math.min(input.loyaltyPoints, input.userPointsBalance);\n    // Cannot reduce price below 0\n    pointsUsed = Math.min(maxPoints, price);\n    price = price - pointsUsed;\n  }\n\n  return {\n    finalPrice: Math.max(price, 0),\n    pointsUsed\n  };\n}\nEOF\n```",
+                "role": "assistant",
+                "tool_calls": null,
+                "function_call": null,
+                "provider_specific_fields": {
+                  "refusal": null
+                }
+              },
+              "provider_specific_fields": {}
+            }
+          ],
+          "usage": {
+            "completion_tokens": 303,
+            "prompt_tokens": 1338,
+            "total_tokens": 1641,
+            "completion_tokens_details": null,
+            "prompt_tokens_details": null
+          },
+          "service_tier": null,
+          "stats": {}
+        }
+      }
+    },
+    {
+      "role": "user",
+      "content": "<returncode>0</returncode>\n<output>\n</output>",
+      "timestamp": 1769533667.490967
+    },
+    {
+      "role": "assistant",
+      "content": "echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT",
+      "timestamp": 1769533669.992259,
+      "extra": {
+        "response": {
+          "id": "chatcmpl-2x9nmwpva8k4yy35byqt92",
+          "created": 1769533667,
+          "model": "jan-v3-4b-base-instruct",
+          "object": "chat.completion",
+          "system_fingerprint": "jan-v3-4b-base-instruct",
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "message": {
+                "content": "echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT",
+                "role": "assistant",
+                "tool_calls": null,
+                "function_call": null,
+                "provider_specific_fields": {
+                  "refusal": null
+                }
+              },
+              "provider_specific_fields": {}
+            }
+          ],
+          "usage": {
+            "completion_tokens": 9,
+            "prompt_tokens": 1665,
+            "total_tokens": 1674,
+            "completion_tokens_details": null,
+            "prompt_tokens_details": null
+          },
+          "service_tier": null,
+          "stats": {}
+        }
+      }
+    },
+    {
+      "role": "user",
+      "content": "\u26a0\ufe0f FORMAT ERROR! Your code block was not recognized.\nYou MUST use ```bash (not just ```) at the start of your code block.\nExample: ```bash\ncat TASK.md\n```\nIf you want to end the task: `echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT`",
+      "timestamp": 1769533669.9961984
+    },
+    {
+      "role": "assistant",
+      "content": "```bash\necho COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT\n```",
+      "timestamp": 1769533672.8862705,
+      "extra": {
+        "response": {
+          "id": "chatcmpl-543r4j64bybhcwpjkv363g",
+          "created": 1769533670,
+          "model": "jan-v3-4b-base-instruct",
+          "object": "chat.completion",
+          "system_fingerprint": "jan-v3-4b-base-instruct",
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "message": {
+                "content": "```bash\necho COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT\n```",
+                "role": "assistant",
+                "tool_calls": null,
+                "function_call": null,
+                "provider_specific_fields": {
+                  "refusal": null
+                }
+              },
+              "provider_specific_fields": {}
+            }
+          ],
+          "usage": {
+            "completion_tokens": 14,
+            "prompt_tokens": 1742,
+            "total_tokens": 1756,
+            "completion_tokens_details": null,
+            "prompt_tokens_details": null
+          },
+          "service_tier": null,
+          "stats": {}
+        }
+      }
+    },
+    {
+      "role": "user",
+      "content": "",
+      "timestamp": 1769533672.8909013
+    }
+  ],
+  "trajectory_format": "mini-swe-agent-1"
+}

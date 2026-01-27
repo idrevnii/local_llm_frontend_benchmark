@@ -1,0 +1,283 @@
+{
+  "info": {
+    "exit_status": "Submitted",
+    "submission": "",
+    "model_stats": {
+      "instance_cost": 0.0,
+      "api_calls": 5
+    },
+    "mini_version": "1.17.4",
+    "config": {
+      "agent": {
+        "system_template": "You are a helpful assistant that can interact with a computer.\nYour response must contain exactly ONE bash code block with ONE command (or commands connected with && or ||).\n\n\u26a0\ufe0f CRITICAL: The code block MUST start with ```bash - NOT just ```\n\n\u274c WRONG (will be rejected):\n```\ncat TASK.md\n```\n\n\u2705 CORRECT:\n```bash\ncat TASK.md\n```\n\nFailure to include \"bash\" after the triple backticks will cause your response to be REJECTED.\nFailure to follow these rules will cause your response to be rejected.\n",
+        "instance_template": "Please solve this task:\n{{task}}\n\nYou are in the directory: /home/anc13nt/local_llm_frontend_benchmark/results/glm-4.7-flash/task_4.1_calendar\nThe task requirements are in TASK.md file.\n\n## CRITICAL SECURITY CONSTRAINT\n\u26d4 You are STRICTLY FORBIDDEN from accessing ANY files or directories outside of /home/anc13nt/local_llm_frontend_benchmark/results/glm-4.7-flash/task_4.1_calendar\n\u26d4 DO NOT use `cd ..`, `cd /`, or any absolute paths outside your working directory\n\u26d4 DO NOT read, list, or access parent directories or sibling folders\n\u26d4 You have NO KNOWLEDGE of other tasks, solutions, or examples\n\u26d4 Any attempt to access external paths will be considered a FAILURE\n\n## CRITICAL: This is a REAL environment\nYou are running in a REAL shell environment. All commands you write WILL BE EXECUTED.\nYou CAN and MUST read files using `cat`. The output will be shown to you.\n\n## MANDATORY First Step\nYour FIRST command MUST be to read the task file:\n```bash\ncat TASK.md\n```\nAfter reading TASK.md, you will see its contents and can proceed with implementation.\n\n## Workflow\n1. FIRST: Read TASK.md with `cat TASK.md` (MANDATORY)\n2. Create the required files based on what you read\n3. Verify your implementation\n4. Submit: `echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT`\n\n## Important Rules\n1. Every response must contain exactly one action\n2. The action must be enclosed in triple backticks\n3. You are already in the correct directory. Just run commands directly.\n4. You are on MacOS, use `sed -i ''` instead of `sed -i`\n5. NEVER leave your working directory!\n\n## Create a new file:\n```bash\ncat <<'EOF' > filename.ext\nfile content here\nEOF\n```\n",
+        "timeout_template": "<timeout>Command timed out.</timeout>\n",
+        "format_error_template": "\u26a0\ufe0f FORMAT ERROR! Your code block was not recognized.\nYou MUST use ```bash (not just ```) at the start of your code block.\nExample: ```bash\ncat TASK.md\n```\nIf you want to end the task: `echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT`\n",
+        "action_observation_template": "<returncode>{{output.returncode}}</returncode>\n{% if output.output | length < 10000 -%}\n<output>\n{{ output.output -}}\n</output>\n{%- else -%}\n<warning>Output too long, truncated.</warning>\n<output_head>{{ output.output[:5000] }}</output_head>\n<output_tail>{{ output.output[-5000:] }}</output_tail>\n{%- endif -%}\n",
+        "action_regex": "```bash\\s*\\n(.*?)\\n```",
+        "step_limit": 30,
+        "cost_limit": 0,
+        "mode": "yolo",
+        "whitelist_actions": [],
+        "confirm_exit": false
+      },
+      "model": {
+        "model_name": "glm-4.7-flash",
+        "model_kwargs": {
+          "custom_llm_provider": "openai",
+          "api_base": "http://localhost:1234/v1",
+          "api_key": "lmstudio",
+          "drop_params": true
+        },
+        "litellm_model_registry": null,
+        "set_cache_control": null,
+        "cost_tracking": "ignore_errors"
+      },
+      "environment": {
+        "cwd": "/home/anc13nt/local_llm_frontend_benchmark/results/glm-4.7-flash/task_4.1_calendar",
+        "env": {
+          "PAGER": "cat",
+          "MANPAGER": "cat",
+          "LESS": "-R"
+        },
+        "timeout": 30
+      },
+      "agent_type": "minisweagent.agents.interactive.InteractiveAgent",
+      "model_type": "minisweagent.models.litellm_model.LitellmModel",
+      "environment_type": "minisweagent.environments.local.LocalEnvironment"
+    }
+  },
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant that can interact with a computer.\nYour response must contain exactly ONE bash code block with ONE command (or commands connected with && or ||).\n\n\u26a0\ufe0f CRITICAL: The code block MUST start with ```bash - NOT just ```\n\n\u274c WRONG (will be rejected):\n```\ncat TASK.md\n```\n\n\u2705 CORRECT:\n```bash\ncat TASK.md\n```\n\nFailure to include \"bash\" after the triple backticks will cause your response to be REJECTED.\nFailure to follow these rules will cause your response to be rejected.",
+      "timestamp": 1769350378.9444227
+    },
+    {
+      "role": "user",
+      "content": "Please solve this task:\nRead TASK.md and complete the task. Create the required files in the current directory.\n\nYou are in the directory: /home/anc13nt/local_llm_frontend_benchmark/results/glm-4.7-flash/task_4.1_calendar\nThe task requirements are in TASK.md file.\n\n## CRITICAL SECURITY CONSTRAINT\n\u26d4 You are STRICTLY FORBIDDEN from accessing ANY files or directories outside of /home/anc13nt/local_llm_frontend_benchmark/results/glm-4.7-flash/task_4.1_calendar\n\u26d4 DO NOT use `cd ..`, `cd /`, or any absolute paths outside your working directory\n\u26d4 DO NOT read, list, or access parent directories or sibling folders\n\u26d4 You have NO KNOWLEDGE of other tasks, solutions, or examples\n\u26d4 Any attempt to access external paths will be considered a FAILURE\n\n## CRITICAL: This is a REAL environment\nYou are running in a REAL shell environment. All commands you write WILL BE EXECUTED.\nYou CAN and MUST read files using `cat`. The output will be shown to you.\n\n## MANDATORY First Step\nYour FIRST command MUST be to read the task file:\n```bash\ncat TASK.md\n```\nAfter reading TASK.md, you will see its contents and can proceed with implementation.\n\n## Workflow\n1. FIRST: Read TASK.md with `cat TASK.md` (MANDATORY)\n2. Create the required files based on what you read\n3. Verify your implementation\n4. Submit: `echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT`\n\n## Important Rules\n1. Every response must contain exactly one action\n2. The action must be enclosed in triple backticks\n3. You are already in the correct directory. Just run commands directly.\n4. You are on MacOS, use `sed -i ''` instead of `sed -i`\n5. NEVER leave your working directory!\n\n## Create a new file:\n```bash\ncat <<'EOF' > filename.ext\nfile content here\nEOF\n```",
+      "timestamp": 1769350378.9455147
+    },
+    {
+      "role": "assistant",
+      "content": "The user wants me to solve a task. Let me follow the instructions:\n\n1. First, I MUST read TASK.md using `cat TASK.md`\n2. Then create the required files\n3. Verify the implementation\n4. Submit with `echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT`\n\nThe user has given me very specific instructions about how to format my response - it must contain exactly ONE bash code block with ONE command.\n\nLet me start by reading the TASK.md file as instructed.</think>```bash\ncat TASK.md\n```",
+      "timestamp": 1769350388.431022,
+      "extra": {
+        "response": {
+          "id": "chatcmpl-7hftpz9ltevpl81j6pndia",
+          "created": 1769350378,
+          "model": "glm-4.7-flash",
+          "object": "chat.completion",
+          "system_fingerprint": "glm-4.7-flash",
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "message": {
+                "content": "The user wants me to solve a task. Let me follow the instructions:\n\n1. First, I MUST read TASK.md using `cat TASK.md`\n2. Then create the required files\n3. Verify the implementation\n4. Submit with `echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT`\n\nThe user has given me very specific instructions about how to format my response - it must contain exactly ONE bash code block with ONE command.\n\nLet me start by reading the TASK.md file as instructed.</think>```bash\ncat TASK.md\n```",
+                "role": "assistant",
+                "tool_calls": null,
+                "function_call": null,
+                "provider_specific_fields": {
+                  "refusal": null
+                }
+              },
+              "provider_specific_fields": {}
+            }
+          ],
+          "usage": {
+            "completion_tokens": 107,
+            "prompt_tokens": 535,
+            "total_tokens": 642,
+            "completion_tokens_details": null,
+            "prompt_tokens_details": null
+          },
+          "service_tier": null,
+          "stats": {}
+        }
+      }
+    },
+    {
+      "role": "user",
+      "content": "<returncode>0</returncode>\n<output>\n# Task 4.1: Booking Calendar (Complex)\n\nImplement a BookingCalendar React TypeScript component with these requirements:\n\n## Functionality\n1. Shows current month with ability to navigate\n2. User selects a date range (check-in and check-out dates)\n3. Some dates are unavailable (passed via blockedDates prop)\n4. Minimum booking period is 3 nights\n5. Cannot select dates in the past\n\n## UX Requirements\n6. On hover, show tooltip with number of nights\n7. When first date is selected, highlight available period\n8. Dates that cannot complete minimum stay should be visually disabled\n\n## Technical Requirements\n9. Handle user timezone\n10. Component should be controlled (value/onChange)\n11. Full TypeScript typing, no `any`\n\n## Props interface\n```typescript\ninterface BookingCalendarProps {\n  value: { startDate: Date | null; endDate: Date | null };\n  onChange: (range: { startDate: Date; endDate: Date }) => void;\n  blockedDates: Date[];\n  minNights?: number; // default 3\n  timezone?: string;\n}\n```\n\n## Expected file\nCreate `BookingCalendar.tsx` in this directory.\n\n> Note: This is an intentionally difficult task to test model limits.\n</output>",
+      "timestamp": 1769350388.4354277
+    },
+    {
+      "role": "assistant",
+      "content": "Now I understand the task. I need to create a BookingCalendar React TypeScript component with the following requirements:\n\n1. Shows current month with navigation\n2. Date range selection (check-in and check-out)\n3. Blocked dates support\n4. Minimum 3 nights booking\n5. Cannot select past dates\n6. Tooltip on hover showing number of nights\n7. Highlight available period when first date is selected\n8. Disable dates that can't complete minimum stay\n9. Handle timezone\n10. Controlled component\n11. Full TypeScript typing\n\nLet me create a comprehensive BookingCalendar.tsx file that meets all these requirements.</think>```bash\ncat <<'EOF' > BookingCalendar.tsx\nimport React, { useState, useEffect, useMemo } from 'react';\nimport { format, startOfMonth, endOfMonth, addMonths, subMonths, isSameDay, isPast, isSameMonth, startOfDay, endOfDay } from 'date-fns';\n\ninterface BookingCalendarProps {\n  value: { startDate: Date | null; endDate: Date | null };\n  onChange: (range: { startDate: Date; endDate: Date }) => void;\n  blockedDates: Date[];\n  minNights?: number;\n  timezone?: string;\n}\n\ninterface DateCell {\n  date: Date;\n  isBlocked: boolean;\n  isPast: boolean;\n  isMinStay: boolean;\n  isSelectable: boolean;\n  nights: number;\n}\n\nexport const BookingCalendar: React.FC<BookingCalendarProps> = ({\n  value,\n  onChange,\n  blockedDates,\n  minNights = 3,\n  timezone = 'UTC'\n}) => {\n  const [currentMonth, setCurrentMonth] = useState(new Date());\n  const [hoveredDate, setHoveredDate] = useState<Date | null>(null);\n\n  const today = new Date();\n  today.setHours(0, 0, 0, 0);\n\n  const { startDate, endDate } = value;\n\n  const monthStart = startOfMonth(currentMonth);\n  const monthEnd = endOfMonth(currentMonth);\n  const daysInMonth = monthEnd.getDate();\n\n  const generateCalendarDays = (): DateCell[] => {\n    const days: DateCell[] = [];\n    const startDay = monthStart.getDay();\n    \n    const prevMonthEnd = new Date(monthStart);\n    prevMonthEnd.setDate(prevMonthEnd.getDate() - startDay);\n    \n    for (let i = startDay; i > 0; i--) {\n      const date = new Date(prevMonthEnd);\n      date.setDate(date.getDate() - (i - 1));\n      days.push(createDateCell(date));\n    }\n    \n    for (let i = 1; i <= daysInMonth; i++) {\n      const date = new Date(monthStart);\n      date.setDate(i);\n      days.push(createDateCell(date));\n    }\n    \n    const remainingDays = 42 - days.length;\n    const nextMonthStart = new Date(monthEnd);\n    nextMonthStart.setDate(nextMonthStart.getDate() + 1);\n    \n    for (let i = 1; i <= remainingDays; i++) {\n      const date = new Date(nextMonthStart);\n      date.setDate(date.getDate() + i - 1);\n      days.push(createDateCell(date));\n    }\n    \n    return days;\n  };\n\n  const createDateCell = (date: Date): DateCell => {\n    const dateStart = startOfDay(date);\n    const dateEnd = endOfDay(date);\n    \n    const isBlocked = blockedDates.some(\n      blocked => startOfDay(blocked) <= dateStart && dateEnd <= endOfDay(blocked)\n    );\n    \n    const isPast = dateStart < today;\n    \n    let isMinStay = false;\n    let nights = 0;\n    \n    if (!isBlocked && !isPast && startDate) {\n      const diffTime = date.getTime() - startDate.getTime();\n      nights = Math.ceil(diffTime / (1000 * 60 * 60 * 24));\n      isMinStay = nights < minNights;\n    }\n    \n    const isSelectable = !isBlocked && !isPast && !isMinStay;\n    \n    return {\n      date,\n      isBlocked,\n      isPast,\n      isMinStay,\n      isSelectable,\n      nights\n    };\n  };\n\n  const handleDateClick = (date: Date) => {\n    const dateStart = startOfDay(date);\n    \n    if (!startDate) {\n      onChange({ startDate: dateStart, endDate: null });\n    } else if (startDate && !endDate) {\n      if (dateStart < startDate) {\n        onChange({ startDate: dateStart, endDate: null });\n      } else {\n        const nights = Math.ceil(date.getTime() - startDate.getTime() / (1000 * 60 * 60 * 24));\n        if (nights >= minNights) {\n          onChange({ startDate: startDate, endDate: dateStart });\n        }\n      }\n    }\n  };\n\n  const handleDateHover = (date: Date) => {\n    if (startDate && !endDate) {\n      setHoveredDate(date);\n    }\n  };\n\n  const handleMonthChange = (direction: 'prev' | 'next') => {\n    const newMonth = direction === 'prev' ? subMonths(currentMonth, 1) : addMonths(currentMonth, 1);\n    setCurrentMonth(newMonth);\n  };\n\n  const calendarDays = useMemo(() => generateCalendarDays(), [currentMonth, blockedDates, minNights]);\n\n  const getCellStyle = (cell: DateCell): React.CSSProperties => {\n    const baseStyle: React.CSSProperties = {\n      padding: '10px',\n      textAlign: 'center',\n      cursor: cell.isSelectable ? 'pointer' : 'not-allowed',\n      borderRadius: '8px',\n      transition: 'all 0.2s',\n      position: 'relative'\n    };\n    \n    if (cell.isBlocked) {\n      baseStyle.backgroundColor = '#f3f4f6';\n      baseStyle.color = '#9ca3af';\n      baseStyle.border = '1px solid #e5e7eb';\n    } else if (cell.isPast) {\n      baseStyle.backgroundColor = '#f9fafb';\n      baseStyle.color = '#d1d5db';\n      baseStyle.border = '1px solid #e5e7eb';\n    } else if (cell.isMinStay) {\n      baseStyle.backgroundColor = '#fef3c7';\n      baseStyle.color = '#d97706';\n      baseStyle.border = '1px solid #fcd34d';\n    } else if (isSameDay(cell.date, startDate)) {\n      baseStyle.backgroundColor = '#3b82f6';\n      baseStyle.color = 'white';\n      baseStyle.border = '2px solid #2563eb';\n    } else if (startDate && !endDate && hoveredDate && cell.date > startDate && cell.date <= hoveredDate) {\n      baseStyle.backgroundColor = '#dbeafe';\n      baseStyle.color = '#1e40af';\n      baseStyle.border = '1px solid #93c5fd';\n    } else if (startDate && endDate && isSameDay(cell.date, endDate)) {\n      baseStyle.backgroundColor = '#10b981';\n      baseStyle.color = 'white';\n      baseStyle.border = '2px solid #059669';\n    } else {\n      baseStyle.backgroundColor = 'white';\n      baseStyle.color = '#1f2937';\n      baseStyle.border = '1px solid #e5e7eb';\n    }\n    \n    return baseStyle;\n  };\n\n  const getTooltip = (cell: DateCell): string | null => {\n    if (cell.isBlocked || cell.isPast) return null;\n    \n    if (startDate && !endDate) {\n      if (cell.date < startDate) return null;\n      const nights = Math.ceil(cell.date.getTime() - startDate.getTime() / (1000 * 60 * 60 * 24));\n      return `${nights} night${nights !== 1 ? 's' : ''} stay`;\n    }\n    \n    if (startDate && endDate) {\n      if (cell.date < startDate || cell.date > endDate) return null;\n      const nights = Math.ceil(cell.date.getTime() - startDate.getTime() / (1000 * 60 * 60 * 24));\n      return `${nights} night${nights !== 1 ? 's' : ''} stay`;\n    }\n    \n    return null;\n  };\n\n  const getNightsDisplay = (cell: DateCell): string | null => {\n    if (cell.isBlocked || cell.isPast) return null;\n    \n    if (startDate && !endDate) {\n      if (cell.date < startDate) return null;\n      const nights = Math.ceil(cell.date.getTime() - startDate.getTime() / (1000 * 60 * 60 * 24));\n      if (nights < minNights) return `${nights} night${nights !== 1 ? 's' : ''}`;\n      return `${nights} night${nights !== 1 ? 's' : ''} stay`;\n    }\n    \n    if (startDate && endDate) {\n      if (cell.date < startDate || cell.date > endDate) return null;\n      const nights = Math.ceil(cell.date.getTime() - startDate.getTime() / (1000 * 60 * 60 * 24));\n      return `${nights} night${nights !== 1 ? 's' : ''} stay`;\n    }\n    \n    return null;\n  };\n\n  return (\n    <div className=\"booking-calendar\" style={{ padding: '20px', fontFamily: 'system-ui, sans-serif' }}>\n      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>\n        <button\n          onClick={() => handleMonthChange('prev')}\n          style={{\n            padding: '8px 16px',\n            border: '1px solid #d1d5db',\n            borderRadius: '6px',\n            cursor: 'pointer',\n            backgroundColor: 'white'\n          }}\n        >\n          \u2190\n        </button>\n        \n        <h2 style={{ margin: 0, fontSize: '1.5rem' }}>\n          {format(currentMonth, 'MMMM yyyy', { timeZone: timezone })}\n        </h2>\n        \n        <button\n          onClick={() => handleMonthChange('next')}\n          style={{\n            padding: '8px 16px',\n            border: '1px solid #d1d5db',\n            borderRadius: '6px',\n            cursor: 'pointer',\n            backgroundColor: 'white'\n          }}\n        >\n          \u2192\n        </button>\n      </div>\n      \n      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '4px', marginBottom: '8px' }}>\n        {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (\n          <div key={day} style={{ textAlign: 'center', fontWeight: '600', color: '#6b7280' }}>\n            {day}\n          </div>\n        ))}\n      </div>\n      \n      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '4px' }}>\n        {calendarDays.map((cell, index) => {\n          const style = getCellStyle(cell);\n          const tooltip = getTooltip(cell);\n          const nightsDisplay = getNightsDisplay(cell);\n          \n          return (\n            <div\n              key={index}\n              style={style}\n              onClick={() => cell.isSelectable && handleDateClick(cell.date)}\n              onMouseEnter={() => handleDateHover(cell.date)}\n              onMouseLeave={() => setHoveredDate(null)}\n            >\n              <div style={{ fontSize: '1rem' }}>\n                {format(cell.date, 'd')}\n              </div>\n              {nightsDisplay && (\n                <div style={{ fontSize: '0.75rem', marginTop: '2px' }}>\n                  {nightsDisplay}\n                </div>\n              )}\n              {tooltip && (\n                <div\n                  style={{\n                    position: 'absolute',\n                    bottom: '100%',\n                    left: '50%',\n                    transform: 'translateX(-50%)',\n                    backgroundColor: 'rgba(0, 0, 0, 0.8)',\n                    color: 'white',\n                    padding: '4px 8px',\n                    borderRadius: '4px',\n                    fontSize: '0.75rem',\n                    whiteSpace: 'nowrap',\n                    marginBottom: '4px',\n                    zIndex: 10\n                  }}\n                >\n                  {tooltip}\n                </div>\n              )}\n            </div>\n          );\n        })}\n      </div>\n      \n      <div style={{ marginTop: '20px', padding: '16px', backgroundColor: '#f3f4f6', borderRadius: '8px' }}>\n        <div style={{ marginBottom: '8px' }}>\n          <strong>Selected Range:</strong>\n        </div>\n        <div>\n          Check-in: {startDate ? format(startDate, 'MMM d, yyyy', { timeZone }) : 'Not selected'}\n        </div>\n        <div>\n          Check-out: {endDate ? format(endDate, 'MMM d, yyyy', { timeZone }) : 'Not selected'}\n        </div>\n        <div>\n          <strong>Min nights: {minNights}</strong>\n        </div>\n      </div>\n    </div>\n  );\n};\n\nexport default BookingCalendar;\nEOF\n```",
+      "timestamp": 1769350753.387942,
+      "extra": {
+        "response": {
+          "id": "chatcmpl-aoq3x7p1hbed63divbhw2r",
+          "created": 1769350388,
+          "model": "glm-4.7-flash",
+          "object": "chat.completion",
+          "system_fingerprint": "glm-4.7-flash",
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "message": {
+                "content": "Now I understand the task. I need to create a BookingCalendar React TypeScript component with the following requirements:\n\n1. Shows current month with navigation\n2. Date range selection (check-in and check-out)\n3. Blocked dates support\n4. Minimum 3 nights booking\n5. Cannot select past dates\n6. Tooltip on hover showing number of nights\n7. Highlight available period when first date is selected\n8. Disable dates that can't complete minimum stay\n9. Handle timezone\n10. Controlled component\n11. Full TypeScript typing\n\nLet me create a comprehensive BookingCalendar.tsx file that meets all these requirements.</think>```bash\ncat <<'EOF' > BookingCalendar.tsx\nimport React, { useState, useEffect, useMemo } from 'react';\nimport { format, startOfMonth, endOfMonth, addMonths, subMonths, isSameDay, isPast, isSameMonth, startOfDay, endOfDay } from 'date-fns';\n\ninterface BookingCalendarProps {\n  value: { startDate: Date | null; endDate: Date | null };\n  onChange: (range: { startDate: Date; endDate: Date }) => void;\n  blockedDates: Date[];\n  minNights?: number;\n  timezone?: string;\n}\n\ninterface DateCell {\n  date: Date;\n  isBlocked: boolean;\n  isPast: boolean;\n  isMinStay: boolean;\n  isSelectable: boolean;\n  nights: number;\n}\n\nexport const BookingCalendar: React.FC<BookingCalendarProps> = ({\n  value,\n  onChange,\n  blockedDates,\n  minNights = 3,\n  timezone = 'UTC'\n}) => {\n  const [currentMonth, setCurrentMonth] = useState(new Date());\n  const [hoveredDate, setHoveredDate] = useState<Date | null>(null);\n\n  const today = new Date();\n  today.setHours(0, 0, 0, 0);\n\n  const { startDate, endDate } = value;\n\n  const monthStart = startOfMonth(currentMonth);\n  const monthEnd = endOfMonth(currentMonth);\n  const daysInMonth = monthEnd.getDate();\n\n  const generateCalendarDays = (): DateCell[] => {\n    const days: DateCell[] = [];\n    const startDay = monthStart.getDay();\n    \n    const prevMonthEnd = new Date(monthStart);\n    prevMonthEnd.setDate(prevMonthEnd.getDate() - startDay);\n    \n    for (let i = startDay; i > 0; i--) {\n      const date = new Date(prevMonthEnd);\n      date.setDate(date.getDate() - (i - 1));\n      days.push(createDateCell(date));\n    }\n    \n    for (let i = 1; i <= daysInMonth; i++) {\n      const date = new Date(monthStart);\n      date.setDate(i);\n      days.push(createDateCell(date));\n    }\n    \n    const remainingDays = 42 - days.length;\n    const nextMonthStart = new Date(monthEnd);\n    nextMonthStart.setDate(nextMonthStart.getDate() + 1);\n    \n    for (let i = 1; i <= remainingDays; i++) {\n      const date = new Date(nextMonthStart);\n      date.setDate(date.getDate() + i - 1);\n      days.push(createDateCell(date));\n    }\n    \n    return days;\n  };\n\n  const createDateCell = (date: Date): DateCell => {\n    const dateStart = startOfDay(date);\n    const dateEnd = endOfDay(date);\n    \n    const isBlocked = blockedDates.some(\n      blocked => startOfDay(blocked) <= dateStart && dateEnd <= endOfDay(blocked)\n    );\n    \n    const isPast = dateStart < today;\n    \n    let isMinStay = false;\n    let nights = 0;\n    \n    if (!isBlocked && !isPast && startDate) {\n      const diffTime = date.getTime() - startDate.getTime();\n      nights = Math.ceil(diffTime / (1000 * 60 * 60 * 24));\n      isMinStay = nights < minNights;\n    }\n    \n    const isSelectable = !isBlocked && !isPast && !isMinStay;\n    \n    return {\n      date,\n      isBlocked,\n      isPast,\n      isMinStay,\n      isSelectable,\n      nights\n    };\n  };\n\n  const handleDateClick = (date: Date) => {\n    const dateStart = startOfDay(date);\n    \n    if (!startDate) {\n      onChange({ startDate: dateStart, endDate: null });\n    } else if (startDate && !endDate) {\n      if (dateStart < startDate) {\n        onChange({ startDate: dateStart, endDate: null });\n      } else {\n        const nights = Math.ceil(date.getTime() - startDate.getTime() / (1000 * 60 * 60 * 24));\n        if (nights >= minNights) {\n          onChange({ startDate: startDate, endDate: dateStart });\n        }\n      }\n    }\n  };\n\n  const handleDateHover = (date: Date) => {\n    if (startDate && !endDate) {\n      setHoveredDate(date);\n    }\n  };\n\n  const handleMonthChange = (direction: 'prev' | 'next') => {\n    const newMonth = direction === 'prev' ? subMonths(currentMonth, 1) : addMonths(currentMonth, 1);\n    setCurrentMonth(newMonth);\n  };\n\n  const calendarDays = useMemo(() => generateCalendarDays(), [currentMonth, blockedDates, minNights]);\n\n  const getCellStyle = (cell: DateCell): React.CSSProperties => {\n    const baseStyle: React.CSSProperties = {\n      padding: '10px',\n      textAlign: 'center',\n      cursor: cell.isSelectable ? 'pointer' : 'not-allowed',\n      borderRadius: '8px',\n      transition: 'all 0.2s',\n      position: 'relative'\n    };\n    \n    if (cell.isBlocked) {\n      baseStyle.backgroundColor = '#f3f4f6';\n      baseStyle.color = '#9ca3af';\n      baseStyle.border = '1px solid #e5e7eb';\n    } else if (cell.isPast) {\n      baseStyle.backgroundColor = '#f9fafb';\n      baseStyle.color = '#d1d5db';\n      baseStyle.border = '1px solid #e5e7eb';\n    } else if (cell.isMinStay) {\n      baseStyle.backgroundColor = '#fef3c7';\n      baseStyle.color = '#d97706';\n      baseStyle.border = '1px solid #fcd34d';\n    } else if (isSameDay(cell.date, startDate)) {\n      baseStyle.backgroundColor = '#3b82f6';\n      baseStyle.color = 'white';\n      baseStyle.border = '2px solid #2563eb';\n    } else if (startDate && !endDate && hoveredDate && cell.date > startDate && cell.date <= hoveredDate) {\n      baseStyle.backgroundColor = '#dbeafe';\n      baseStyle.color = '#1e40af';\n      baseStyle.border = '1px solid #93c5fd';\n    } else if (startDate && endDate && isSameDay(cell.date, endDate)) {\n      baseStyle.backgroundColor = '#10b981';\n      baseStyle.color = 'white';\n      baseStyle.border = '2px solid #059669';\n    } else {\n      baseStyle.backgroundColor = 'white';\n      baseStyle.color = '#1f2937';\n      baseStyle.border = '1px solid #e5e7eb';\n    }\n    \n    return baseStyle;\n  };\n\n  const getTooltip = (cell: DateCell): string | null => {\n    if (cell.isBlocked || cell.isPast) return null;\n    \n    if (startDate && !endDate) {\n      if (cell.date < startDate) return null;\n      const nights = Math.ceil(cell.date.getTime() - startDate.getTime() / (1000 * 60 * 60 * 24));\n      return `${nights} night${nights !== 1 ? 's' : ''} stay`;\n    }\n    \n    if (startDate && endDate) {\n      if (cell.date < startDate || cell.date > endDate) return null;\n      const nights = Math.ceil(cell.date.getTime() - startDate.getTime() / (1000 * 60 * 60 * 24));\n      return `${nights} night${nights !== 1 ? 's' : ''} stay`;\n    }\n    \n    return null;\n  };\n\n  const getNightsDisplay = (cell: DateCell): string | null => {\n    if (cell.isBlocked || cell.isPast) return null;\n    \n    if (startDate && !endDate) {\n      if (cell.date < startDate) return null;\n      const nights = Math.ceil(cell.date.getTime() - startDate.getTime() / (1000 * 60 * 60 * 24));\n      if (nights < minNights) return `${nights} night${nights !== 1 ? 's' : ''}`;\n      return `${nights} night${nights !== 1 ? 's' : ''} stay`;\n    }\n    \n    if (startDate && endDate) {\n      if (cell.date < startDate || cell.date > endDate) return null;\n      const nights = Math.ceil(cell.date.getTime() - startDate.getTime() / (1000 * 60 * 60 * 24));\n      return `${nights} night${nights !== 1 ? 's' : ''} stay`;\n    }\n    \n    return null;\n  };\n\n  return (\n    <div className=\"booking-calendar\" style={{ padding: '20px', fontFamily: 'system-ui, sans-serif' }}>\n      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>\n        <button\n          onClick={() => handleMonthChange('prev')}\n          style={{\n            padding: '8px 16px',\n            border: '1px solid #d1d5db',\n            borderRadius: '6px',\n            cursor: 'pointer',\n            backgroundColor: 'white'\n          }}\n        >\n          \u2190\n        </button>\n        \n        <h2 style={{ margin: 0, fontSize: '1.5rem' }}>\n          {format(currentMonth, 'MMMM yyyy', { timeZone: timezone })}\n        </h2>\n        \n        <button\n          onClick={() => handleMonthChange('next')}\n          style={{\n            padding: '8px 16px',\n            border: '1px solid #d1d5db',\n            borderRadius: '6px',\n            cursor: 'pointer',\n            backgroundColor: 'white'\n          }}\n        >\n          \u2192\n        </button>\n      </div>\n      \n      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '4px', marginBottom: '8px' }}>\n        {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (\n          <div key={day} style={{ textAlign: 'center', fontWeight: '600', color: '#6b7280' }}>\n            {day}\n          </div>\n        ))}\n      </div>\n      \n      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '4px' }}>\n        {calendarDays.map((cell, index) => {\n          const style = getCellStyle(cell);\n          const tooltip = getTooltip(cell);\n          const nightsDisplay = getNightsDisplay(cell);\n          \n          return (\n            <div\n              key={index}\n              style={style}\n              onClick={() => cell.isSelectable && handleDateClick(cell.date)}\n              onMouseEnter={() => handleDateHover(cell.date)}\n              onMouseLeave={() => setHoveredDate(null)}\n            >\n              <div style={{ fontSize: '1rem' }}>\n                {format(cell.date, 'd')}\n              </div>\n              {nightsDisplay && (\n                <div style={{ fontSize: '0.75rem', marginTop: '2px' }}>\n                  {nightsDisplay}\n                </div>\n              )}\n              {tooltip && (\n                <div\n                  style={{\n                    position: 'absolute',\n                    bottom: '100%',\n                    left: '50%',\n                    transform: 'translateX(-50%)',\n                    backgroundColor: 'rgba(0, 0, 0, 0.8)',\n                    color: 'white',\n                    padding: '4px 8px',\n                    borderRadius: '4px',\n                    fontSize: '0.75rem',\n                    whiteSpace: 'nowrap',\n                    marginBottom: '4px',\n                    zIndex: 10\n                  }}\n                >\n                  {tooltip}\n                </div>\n              )}\n            </div>\n          );\n        })}\n      </div>\n      \n      <div style={{ marginTop: '20px', padding: '16px', backgroundColor: '#f3f4f6', borderRadius: '8px' }}>\n        <div style={{ marginBottom: '8px' }}>\n          <strong>Selected Range:</strong>\n        </div>\n        <div>\n          Check-in: {startDate ? format(startDate, 'MMM d, yyyy', { timeZone }) : 'Not selected'}\n        </div>\n        <div>\n          Check-out: {endDate ? format(endDate, 'MMM d, yyyy', { timeZone }) : 'Not selected'}\n        </div>\n        <div>\n          <strong>Min nights: {minNights}</strong>\n        </div>\n      </div>\n    </div>\n  );\n};\n\nexport default BookingCalendar;\nEOF\n```",
+                "role": "assistant",
+                "tool_calls": null,
+                "function_call": null,
+                "provider_specific_fields": {
+                  "refusal": null
+                }
+              },
+              "provider_specific_fields": {}
+            }
+          ],
+          "usage": {
+            "completion_tokens": 2810,
+            "prompt_tokens": 916,
+            "total_tokens": 3726,
+            "completion_tokens_details": null,
+            "prompt_tokens_details": null
+          },
+          "service_tier": null,
+          "stats": {}
+        }
+      }
+    },
+    {
+      "role": "user",
+      "content": "<returncode>0</returncode>\n<output>\n</output>",
+      "timestamp": 1769350753.3957772
+    },
+    {
+      "role": "assistant",
+      "content": "The file has been created successfully. Now I should verify the implementation by checking if the file exists and has content. Let me also check if there are any TypeScript dependencies needed.</think>```bash\ncat BookingCalendar.tsx | head -20\n```",
+      "timestamp": 1769350775.7147872,
+      "extra": {
+        "response": {
+          "id": "chatcmpl-3tnlfb7ttxkjhzoa2gtqs",
+          "created": 1769350752,
+          "model": "glm-4.7-flash",
+          "object": "chat.completion",
+          "system_fingerprint": "glm-4.7-flash",
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "message": {
+                "content": "The file has been created successfully. Now I should verify the implementation by checking if the file exists and has content. Let me also check if there are any TypeScript dependencies needed.</think>```bash\ncat BookingCalendar.tsx | head -20\n```",
+                "role": "assistant",
+                "tool_calls": null,
+                "function_call": null,
+                "provider_specific_fields": {
+                  "refusal": null
+                }
+              },
+              "provider_specific_fields": {}
+            }
+          ],
+          "usage": {
+            "completion_tokens": 51,
+            "prompt_tokens": 3741,
+            "total_tokens": 3792,
+            "completion_tokens_details": null,
+            "prompt_tokens_details": null
+          },
+          "service_tier": null,
+          "stats": {}
+        }
+      }
+    },
+    {
+      "role": "user",
+      "content": "<returncode>0</returncode>\n<output>\nimport React, { useState, useEffect, useMemo } from 'react';\nimport { format, startOfMonth, endOfMonth, addMonths, subMonths, isSameDay, isPast, isSameMonth, startOfDay, endOfDay } from 'date-fns';\n\ninterface BookingCalendarProps {\n  value: { startDate: Date | null; endDate: Date | null };\n  onChange: (range: { startDate: Date; endDate: Date }) => void;\n  blockedDates: Date[];\n  minNights?: number;\n  timezone?: string;\n}\n\ninterface DateCell {\n  date: Date;\n  isBlocked: boolean;\n  isPast: boolean;\n  isMinStay: boolean;\n  isSelectable: boolean;\n  nights: number;\n}\n\n</output>",
+      "timestamp": 1769350775.7189674
+    },
+    {
+      "role": "assistant",
+      "content": "Good, the file is created. Now let me verify the implementation by checking if there are any issues and then submit. Let me also make sure the file is complete by checking its length.</think>```bash\nwc -l BookingCalendar.tsx\n```",
+      "timestamp": 1769350789.773949,
+      "extra": {
+        "response": {
+          "id": "chatcmpl-wz1hmn0mcfdgrw23iq4c",
+          "created": 1769350776,
+          "model": "glm-4.7-flash",
+          "object": "chat.completion",
+          "system_fingerprint": "glm-4.7-flash",
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "message": {
+                "content": "Good, the file is created. Now let me verify the implementation by checking if there are any issues and then submit. Let me also make sure the file is complete by checking its length.</think>```bash\nwc -l BookingCalendar.tsx\n```",
+                "role": "assistant",
+                "tool_calls": null,
+                "function_call": null,
+                "provider_specific_fields": {
+                  "refusal": null
+                }
+              },
+              "provider_specific_fields": {}
+            }
+          ],
+          "usage": {
+            "completion_tokens": 52,
+            "prompt_tokens": 3960,
+            "total_tokens": 4012,
+            "completion_tokens_details": null,
+            "prompt_tokens_details": null
+          },
+          "service_tier": null,
+          "stats": {}
+        }
+      }
+    },
+    {
+      "role": "user",
+      "content": "<returncode>0</returncode>\n<output>\n320 BookingCalendar.tsx\n</output>",
+      "timestamp": 1769350789.7780747
+    },
+    {
+      "role": "assistant",
+      "content": "The file has been created successfully with 320 lines. Now I should submit the task as requested.</think>```bash\necho COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT\n```",
+      "timestamp": 1769350796.7393484,
+      "extra": {
+        "response": {
+          "id": "chatcmpl-3to4kmc5ijaccin6gkaz",
+          "created": 1769350788,
+          "model": "glm-4.7-flash",
+          "object": "chat.completion",
+          "system_fingerprint": "glm-4.7-flash",
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "message": {
+                "content": "The file has been created successfully with 320 lines. Now I should submit the task as requested.</think>```bash\necho COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT\n```",
+                "role": "assistant",
+                "tool_calls": null,
+                "function_call": null,
+                "provider_specific_fields": {
+                  "refusal": null
+                }
+              },
+              "provider_specific_fields": {}
+            }
+          ],
+          "usage": {
+            "completion_tokens": 35,
+            "prompt_tokens": 4035,
+            "total_tokens": 4070,
+            "completion_tokens_details": null,
+            "prompt_tokens_details": null
+          },
+          "service_tier": null,
+          "stats": {}
+        }
+      }
+    },
+    {
+      "role": "user",
+      "content": "",
+      "timestamp": 1769350796.741285
+    }
+  ],
+  "trajectory_format": "mini-swe-agent-1"
+}

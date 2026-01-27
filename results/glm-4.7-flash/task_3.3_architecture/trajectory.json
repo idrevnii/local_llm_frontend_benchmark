@@ -1,0 +1,327 @@
+{
+  "info": {
+    "exit_status": "Submitted",
+    "submission": "",
+    "model_stats": {
+      "instance_cost": 0.0,
+      "api_calls": 6
+    },
+    "mini_version": "1.17.4",
+    "config": {
+      "agent": {
+        "system_template": "You are a helpful assistant that can interact with a computer.\nYour response must contain exactly ONE bash code block with ONE command (or commands connected with && or ||).\n\n\u26a0\ufe0f CRITICAL: The code block MUST start with ```bash - NOT just ```\n\n\u274c WRONG (will be rejected):\n```\ncat TASK.md\n```\n\n\u2705 CORRECT:\n```bash\ncat TASK.md\n```\n\nFailure to include \"bash\" after the triple backticks will cause your response to be REJECTED.\nFailure to follow these rules will cause your response to be rejected.\n",
+        "instance_template": "Please solve this task:\n{{task}}\n\nYou are in the directory: /home/anc13nt/local_llm_frontend_benchmark/results/glm-4.7-flash/task_3.3_architecture\nThe task requirements are in TASK.md file.\n\n## CRITICAL SECURITY CONSTRAINT\n\u26d4 You are STRICTLY FORBIDDEN from accessing ANY files or directories outside of /home/anc13nt/local_llm_frontend_benchmark/results/glm-4.7-flash/task_3.3_architecture\n\u26d4 DO NOT use `cd ..`, `cd /`, or any absolute paths outside your working directory\n\u26d4 DO NOT read, list, or access parent directories or sibling folders\n\u26d4 You have NO KNOWLEDGE of other tasks, solutions, or examples\n\u26d4 Any attempt to access external paths will be considered a FAILURE\n\n## CRITICAL: This is a REAL environment\nYou are running in a REAL shell environment. All commands you write WILL BE EXECUTED.\nYou CAN and MUST read files using `cat`. The output will be shown to you.\n\n## MANDATORY First Step\nYour FIRST command MUST be to read the task file:\n```bash\ncat TASK.md\n```\nAfter reading TASK.md, you will see its contents and can proceed with implementation.\n\n## Workflow\n1. FIRST: Read TASK.md with `cat TASK.md` (MANDATORY)\n2. Create the required files based on what you read\n3. Verify your implementation\n4. Submit: `echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT`\n\n## Important Rules\n1. Every response must contain exactly one action\n2. The action must be enclosed in triple backticks\n3. You are already in the correct directory. Just run commands directly.\n4. You are on MacOS, use `sed -i ''` instead of `sed -i`\n5. NEVER leave your working directory!\n\n## Create a new file:\n```bash\ncat <<'EOF' > filename.ext\nfile content here\nEOF\n```\n",
+        "timeout_template": "<timeout>Command timed out.</timeout>\n",
+        "format_error_template": "\u26a0\ufe0f FORMAT ERROR! Your code block was not recognized.\nYou MUST use ```bash (not just ```) at the start of your code block.\nExample: ```bash\ncat TASK.md\n```\nIf you want to end the task: `echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT`\n",
+        "action_observation_template": "<returncode>{{output.returncode}}</returncode>\n{% if output.output | length < 10000 -%}\n<output>\n{{ output.output -}}\n</output>\n{%- else -%}\n<warning>Output too long, truncated.</warning>\n<output_head>{{ output.output[:5000] }}</output_head>\n<output_tail>{{ output.output[-5000:] }}</output_tail>\n{%- endif -%}\n",
+        "action_regex": "```bash\\s*\\n(.*?)\\n```",
+        "step_limit": 30,
+        "cost_limit": 0,
+        "mode": "yolo",
+        "whitelist_actions": [],
+        "confirm_exit": false
+      },
+      "model": {
+        "model_name": "glm-4.7-flash",
+        "model_kwargs": {
+          "custom_llm_provider": "openai",
+          "api_base": "http://localhost:1234/v1",
+          "api_key": "lmstudio",
+          "drop_params": true
+        },
+        "litellm_model_registry": null,
+        "set_cache_control": null,
+        "cost_tracking": "ignore_errors"
+      },
+      "environment": {
+        "cwd": "/home/anc13nt/local_llm_frontend_benchmark/results/glm-4.7-flash/task_3.3_architecture",
+        "env": {
+          "PAGER": "cat",
+          "MANPAGER": "cat",
+          "LESS": "-R"
+        },
+        "timeout": 30
+      },
+      "agent_type": "minisweagent.agents.interactive.InteractiveAgent",
+      "model_type": "minisweagent.models.litellm_model.LitellmModel",
+      "environment_type": "minisweagent.environments.local.LocalEnvironment"
+    }
+  },
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant that can interact with a computer.\nYour response must contain exactly ONE bash code block with ONE command (or commands connected with && or ||).\n\n\u26a0\ufe0f CRITICAL: The code block MUST start with ```bash - NOT just ```\n\n\u274c WRONG (will be rejected):\n```\ncat TASK.md\n```\n\n\u2705 CORRECT:\n```bash\ncat TASK.md\n```\n\nFailure to include \"bash\" after the triple backticks will cause your response to be REJECTED.\nFailure to follow these rules will cause your response to be rejected.",
+      "timestamp": 1769346155.8669558
+    },
+    {
+      "role": "user",
+      "content": "Please solve this task:\nRead TASK.md and complete the task. Create the required files in the current directory.\n\nYou are in the directory: /home/anc13nt/local_llm_frontend_benchmark/results/glm-4.7-flash/task_3.3_architecture\nThe task requirements are in TASK.md file.\n\n## CRITICAL SECURITY CONSTRAINT\n\u26d4 You are STRICTLY FORBIDDEN from accessing ANY files or directories outside of /home/anc13nt/local_llm_frontend_benchmark/results/glm-4.7-flash/task_3.3_architecture\n\u26d4 DO NOT use `cd ..`, `cd /`, or any absolute paths outside your working directory\n\u26d4 DO NOT read, list, or access parent directories or sibling folders\n\u26d4 You have NO KNOWLEDGE of other tasks, solutions, or examples\n\u26d4 Any attempt to access external paths will be considered a FAILURE\n\n## CRITICAL: This is a REAL environment\nYou are running in a REAL shell environment. All commands you write WILL BE EXECUTED.\nYou CAN and MUST read files using `cat`. The output will be shown to you.\n\n## MANDATORY First Step\nYour FIRST command MUST be to read the task file:\n```bash\ncat TASK.md\n```\nAfter reading TASK.md, you will see its contents and can proceed with implementation.\n\n## Workflow\n1. FIRST: Read TASK.md with `cat TASK.md` (MANDATORY)\n2. Create the required files based on what you read\n3. Verify your implementation\n4. Submit: `echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT`\n\n## Important Rules\n1. Every response must contain exactly one action\n2. The action must be enclosed in triple backticks\n3. You are already in the correct directory. Just run commands directly.\n4. You are on MacOS, use `sed -i ''` instead of `sed -i`\n5. NEVER leave your working directory!\n\n## Create a new file:\n```bash\ncat <<'EOF' > filename.ext\nfile content here\nEOF\n```",
+      "timestamp": 1769346155.8680289
+    },
+    {
+      "role": "assistant",
+      "content": "The user wants me to:\n1. First read TASK.md using `cat TASK.md`\n2. Then create the required files based on what's in TASK.md\n3. Verify the implementation\n4. Submit with `echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT`\n\nThe user has emphasized that I MUST start with reading TASK.md. Let me do that first.</think>```bash\ncat TASK.md\n```",
+      "timestamp": 1769346163.7333343,
+      "extra": {
+        "response": {
+          "id": "chatcmpl-zqnh0a97lpn75k8hjayd7t",
+          "created": 1769346155,
+          "model": "glm-4.7-flash",
+          "object": "chat.completion",
+          "system_fingerprint": "glm-4.7-flash",
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "message": {
+                "content": "The user wants me to:\n1. First read TASK.md using `cat TASK.md`\n2. Then create the required files based on what's in TASK.md\n3. Verify the implementation\n4. Submit with `echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT`\n\nThe user has emphasized that I MUST start with reading TASK.md. Let me do that first.</think>```bash\ncat TASK.md\n```",
+                "role": "assistant",
+                "tool_calls": null,
+                "function_call": null,
+                "provider_specific_fields": {
+                  "refusal": null
+                }
+              },
+              "provider_specific_fields": {}
+            }
+          ],
+          "usage": {
+            "completion_tokens": 82,
+            "prompt_tokens": 537,
+            "total_tokens": 619,
+            "completion_tokens_details": null,
+            "prompt_tokens_details": null
+          },
+          "service_tier": null,
+          "stats": {}
+        }
+      }
+    },
+    {
+      "role": "user",
+      "content": "<returncode>0</returncode>\n<output>\n# Task 3.3: Validation System Architecture\n\nOur application has many forms (registration, profile, settings, checkout) that use the same validation logic: email, phone, required, minLength, maxLength, pattern.\n\nDesign a reusable validation system architecture and show an example implementation.\n\n## Requirements\n- Declarative rule definition\n- Ability to add custom rules\n- Type safety (TypeScript)\n- Error messages in English\n\n## Expected deliverables\n1. Validation types and rules (`validation.ts`)\n2. useValidation hook (`useValidation.ts`)\n3. Usage example (`example.tsx`)\n\nCreate all files in this directory.\n</output>",
+      "timestamp": 1769346163.7367418
+    },
+    {
+      "role": "assistant",
+      "content": "Now I understand the task. I need to create a validation system architecture with:\n\n1. `validation.ts` - Validation types and rules\n2. `useValidation.ts` - The useValidation hook\n3. `example.tsx` - Usage example\n\nLet me create these files based on the requirements:\n- Declarative rule definition\n- Ability to add custom rules\n- Type safety (TypeScript)\n- Error messages in English\n\nI'll create a comprehensive validation system.</think>```bash\ncat <<'EOF' > validation.ts\n/**\n * Validation Types and Rules\n * A reusable validation system for forms\n */\n\n// Validation rule types\nexport type ValidationRule<T = any> = {\n  validate: (value: T) => boolean | string;\n  message?: string;\n};\n\n// Validation result\nexport interface ValidationResult {\n  isValid: boolean;\n  errors: Record<string, string>;\n}\n\n// Form validation rules\nexport const validationRules = {\n  // Required field\n  required: (value: any): boolean | string => {\n    if (value === undefined || value === null || value === '') {\n      return 'This field is required';\n    }\n    return true;\n  },\n\n  // Email validation\n  email: (value: string): boolean | string => {\n    const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n    if (!emailRegex.test(value)) {\n      return 'Please enter a valid email address';\n    }\n    return true;\n  },\n\n  // Phone validation (simple format)\n  phone: (value: string): boolean | string => {\n    const phoneRegex = /^[\\d\\s\\-\\+\\(\\)]{10,}$/;\n    if (!phoneRegex.test(value)) {\n      return 'Please enter a valid phone number';\n    }\n    return true;\n  },\n\n  // Minimum length\n  minLength: (min: number) => (value: string): boolean | string => {\n    if (value.length < min) {\n      return `Must be at least ${min} characters`;\n    }\n    return true;\n  },\n\n  // Maximum length\n  maxLength: (max: number) => (value: string): boolean | string => {\n    if (value.length > max) {\n      return `Must be no more than ${max} characters`;\n    }\n    return true;\n  },\n\n  // Pattern matching\n  pattern: (regex: RegExp, message?: string) => (value: string): boolean | string => {\n    if (!regex.test(value)) {\n      return message || 'Invalid format';\n    }\n    return true;\n  },\n\n  // Custom validation function\n  custom: (validator: (value: any) => boolean | string, message?: string) => \n    (value: any): boolean | string => {\n      const result = validator(value);\n      return result === true ? true : (message || result);\n    }\n};\n\n// Type-safe validation rule builder\nexport function createValidationRule<T>(\n  rule: ValidationRule<T>\n): ValidationRule<T> {\n  return rule;\n}\n\n// Combine multiple rules\nexport function combineRules<T>(...rules: ValidationRule<T>[]): ValidationRule<T> {\n  return {\n    validate: (value: T) => {\n      for (const rule of rules) {\n        const result = rule.validate(value);\n        if (result !== true) {\n          return result;\n        }\n      }\n      return true;\n    }\n  };\n}\n\n// Default error messages\nexport const defaultMessages = {\n  required: 'This field is required',\n  email: 'Please enter a valid email address',\n  phone: 'Please enter a valid phone number',\n  minLength: (min: number) => `Must be at least ${min} characters`,\n  maxLength: (max: number) => `Must be no more than ${max} characters`,\n  pattern: 'Invalid format'\n};\nEOF\n```",
+      "timestamp": 1769346233.771508,
+      "extra": {
+        "response": {
+          "id": "chatcmpl-z59yj5whcbljj8qefwcu5l",
+          "created": 1769346163,
+          "model": "glm-4.7-flash",
+          "object": "chat.completion",
+          "system_fingerprint": "glm-4.7-flash",
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "message": {
+                "content": "Now I understand the task. I need to create a validation system architecture with:\n\n1. `validation.ts` - Validation types and rules\n2. `useValidation.ts` - The useValidation hook\n3. `example.tsx` - Usage example\n\nLet me create these files based on the requirements:\n- Declarative rule definition\n- Ability to add custom rules\n- Type safety (TypeScript)\n- Error messages in English\n\nI'll create a comprehensive validation system.</think>```bash\ncat <<'EOF' > validation.ts\n/**\n * Validation Types and Rules\n * A reusable validation system for forms\n */\n\n// Validation rule types\nexport type ValidationRule<T = any> = {\n  validate: (value: T) => boolean | string;\n  message?: string;\n};\n\n// Validation result\nexport interface ValidationResult {\n  isValid: boolean;\n  errors: Record<string, string>;\n}\n\n// Form validation rules\nexport const validationRules = {\n  // Required field\n  required: (value: any): boolean | string => {\n    if (value === undefined || value === null || value === '') {\n      return 'This field is required';\n    }\n    return true;\n  },\n\n  // Email validation\n  email: (value: string): boolean | string => {\n    const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n    if (!emailRegex.test(value)) {\n      return 'Please enter a valid email address';\n    }\n    return true;\n  },\n\n  // Phone validation (simple format)\n  phone: (value: string): boolean | string => {\n    const phoneRegex = /^[\\d\\s\\-\\+\\(\\)]{10,}$/;\n    if (!phoneRegex.test(value)) {\n      return 'Please enter a valid phone number';\n    }\n    return true;\n  },\n\n  // Minimum length\n  minLength: (min: number) => (value: string): boolean | string => {\n    if (value.length < min) {\n      return `Must be at least ${min} characters`;\n    }\n    return true;\n  },\n\n  // Maximum length\n  maxLength: (max: number) => (value: string): boolean | string => {\n    if (value.length > max) {\n      return `Must be no more than ${max} characters`;\n    }\n    return true;\n  },\n\n  // Pattern matching\n  pattern: (regex: RegExp, message?: string) => (value: string): boolean | string => {\n    if (!regex.test(value)) {\n      return message || 'Invalid format';\n    }\n    return true;\n  },\n\n  // Custom validation function\n  custom: (validator: (value: any) => boolean | string, message?: string) => \n    (value: any): boolean | string => {\n      const result = validator(value);\n      return result === true ? true : (message || result);\n    }\n};\n\n// Type-safe validation rule builder\nexport function createValidationRule<T>(\n  rule: ValidationRule<T>\n): ValidationRule<T> {\n  return rule;\n}\n\n// Combine multiple rules\nexport function combineRules<T>(...rules: ValidationRule<T>[]): ValidationRule<T> {\n  return {\n    validate: (value: T) => {\n      for (const rule of rules) {\n        const result = rule.validate(value);\n        if (result !== true) {\n          return result;\n        }\n      }\n      return true;\n    }\n  };\n}\n\n// Default error messages\nexport const defaultMessages = {\n  required: 'This field is required',\n  email: 'Please enter a valid email address',\n  phone: 'Please enter a valid phone number',\n  minLength: (min: number) => `Must be at least ${min} characters`,\n  maxLength: (max: number) => `Must be no more than ${max} characters`,\n  pattern: 'Invalid format'\n};\nEOF\n```",
+                "role": "assistant",
+                "tool_calls": null,
+                "function_call": null,
+                "provider_specific_fields": {
+                  "refusal": null
+                }
+              },
+              "provider_specific_fields": {}
+            }
+          ],
+          "usage": {
+            "completion_tokens": 801,
+            "prompt_tokens": 764,
+            "total_tokens": 1565,
+            "completion_tokens_details": null,
+            "prompt_tokens_details": null
+          },
+          "service_tier": null,
+          "stats": {}
+        }
+      }
+    },
+    {
+      "role": "user",
+      "content": "<returncode>0</returncode>\n<output>\n</output>",
+      "timestamp": 1769346233.776874
+    },
+    {
+      "role": "assistant",
+      "content": "Good, the validation.ts file was created. Now I need to create the useValidation.ts hook.</think>```bash\ncat <<'EOF' > useValidation.ts\n/**\n * useValidation Hook\n * A React hook for managing form validation\n */\n\nimport { useState, useCallback, useMemo } from 'react';\nimport { ValidationResult, validationRules, ValidationRule, combineRules } from './validation';\n\ninterface UseValidationOptions<T extends Record<string, any>> {\n  initialValues: T;\n  rules: Record<keyof T, ValidationRule<any>[]>;\n}\n\nexport function useValidation<T extends Record<string, any>>({\n  initialValues,\n  rules\n}: UseValidationOptions<T>) {\n  const [values, setValues] = useState<T>(initialValues);\n  const [errors, setErrors] = useState<Record<string, string>>({});\n  const [touched, setTouched] = useState<Record<string, boolean>>({});\n\n  // Validate a single field\n  const validateField = useCallback(\n    (name: keyof T, value: any): string | true => {\n      const fieldRules = rules[name];\n      if (!fieldRules || fieldRules.length === 0) {\n        return true;\n      }\n\n      for (const rule of fieldRules) {\n        const result = rule.validate(value);\n        if (result !== true) {\n          return typeof result === 'string' ? result : 'Invalid value';\n        }\n      }\n      return true;\n    },\n    [rules]\n  );\n\n  // Validate all fields\n  const validateAll = useCallback((): ValidationResult => {\n    const newErrors: Record<string, string> = {};\n    let isValid = true;\n\n    for (const name in rules) {\n      const value = values[name];\n      const result = validateField(name, value);\n      \n      if (result !== true) {\n        newErrors[name as string] = result as string;\n        isValid = false;\n      }\n    }\n\n    setErrors(newErrors);\n    return { isValid, errors: newErrors };\n  }, [values, rules, validateField]);\n\n  // Handle field change\n  const handleChange = useCallback(\n    (name: keyof T, value: any) => {\n      setValues(prev => ({ ...prev, [name]: value }));\n      // Clear error when user starts typing\n      if (touched[name]) {\n        const result = validateField(name, value);\n        if (result === true) {\n          setErrors(prev => {\n            const newErrors = { ...prev };\n            delete newErrors[name as string];\n            return newErrors;\n          });\n        }\n      }\n    },\n    [validateField, touched]\n  );\n\n  // Handle field blur (mark as touched)\n  const handleBlur = useCallback(\n    (name: keyof T) => {\n      setTouched(prev => ({ ...prev, [name]: true }));\n      const result = validateField(name, values[name]);\n      if (result !== true) {\n        setErrors(prev => ({\n          ...prev,\n          [name as string]: result as string\n        }));\n      }\n    },\n    [validateField, values]\n  );\n\n  // Reset form\n  const reset = useCallback(() => {\n    setValues(initialValues);\n    setErrors({});\n    setTouched({});\n  }, [initialValues]);\n\n  // Check if field is valid\n  const isValid = useCallback(\n    (name: keyof T): boolean => {\n      return errors[name as string] === undefined;\n    },\n    [errors]\n  );\n\n  // Check if field is touched\n  const isTouched = useCallback(\n    (name: keyof T): boolean => {\n      return touched[name] || false;\n    },\n    [touched]\n  );\n\n  // Get error message for a field\n  const getError = useCallback(\n    (name: keyof T): string | undefined => {\n      return errors[name as string];\n    },\n    [errors]\n  );\n\n  // Memoized validation result\n  const validationResult = useMemo(() => {\n    return { isValid: Object.keys(errors).length === 0, errors };\n  }, [errors]);\n\n  return {\n    values,\n    errors,\n    touched,\n    handleChange,\n    handleBlur,\n    validateAll,\n    reset,\n    isValid,\n    isTouched,\n    getError,\n    validationResult\n  };\n}\n\n// Custom hook for single field validation\nexport function useFieldValidation<T>(\n  value: T,\n  rules: ValidationRule<any>[],\n  isTouched: boolean = false\n) {\n  const [error, setError] = useState<string | undefined>();\n\n  const validate = useCallback(() => {\n    if (!isTouched) {\n      setError(undefined);\n      return;\n    }\n\n    for (const rule of rules) {\n      const result = rule.validate(value);\n      if (result !== true) {\n        setError(typeof result === 'string' ? result : 'Invalid value');\n        return;\n      }\n    }\n    setError(undefined);\n  }, [value, rules, isTouched]);\n\n  useEffect(() => {\n    validate();\n  }, [validate]);\n\n  return {\n    error,\n    isValid: error === undefined,\n    validate\n  };\n}\nEOF\n```",
+      "timestamp": 1769346362.7524364,
+      "extra": {
+        "response": {
+          "id": "chatcmpl-6trzb8t1uac54x78adfdbu",
+          "created": 1769346233,
+          "model": "glm-4.7-flash",
+          "object": "chat.completion",
+          "system_fingerprint": "glm-4.7-flash",
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "message": {
+                "content": "Good, the validation.ts file was created. Now I need to create the useValidation.ts hook.</think>```bash\ncat <<'EOF' > useValidation.ts\n/**\n * useValidation Hook\n * A React hook for managing form validation\n */\n\nimport { useState, useCallback, useMemo } from 'react';\nimport { ValidationResult, validationRules, ValidationRule, combineRules } from './validation';\n\ninterface UseValidationOptions<T extends Record<string, any>> {\n  initialValues: T;\n  rules: Record<keyof T, ValidationRule<any>[]>;\n}\n\nexport function useValidation<T extends Record<string, any>>({\n  initialValues,\n  rules\n}: UseValidationOptions<T>) {\n  const [values, setValues] = useState<T>(initialValues);\n  const [errors, setErrors] = useState<Record<string, string>>({});\n  const [touched, setTouched] = useState<Record<string, boolean>>({});\n\n  // Validate a single field\n  const validateField = useCallback(\n    (name: keyof T, value: any): string | true => {\n      const fieldRules = rules[name];\n      if (!fieldRules || fieldRules.length === 0) {\n        return true;\n      }\n\n      for (const rule of fieldRules) {\n        const result = rule.validate(value);\n        if (result !== true) {\n          return typeof result === 'string' ? result : 'Invalid value';\n        }\n      }\n      return true;\n    },\n    [rules]\n  );\n\n  // Validate all fields\n  const validateAll = useCallback((): ValidationResult => {\n    const newErrors: Record<string, string> = {};\n    let isValid = true;\n\n    for (const name in rules) {\n      const value = values[name];\n      const result = validateField(name, value);\n      \n      if (result !== true) {\n        newErrors[name as string] = result as string;\n        isValid = false;\n      }\n    }\n\n    setErrors(newErrors);\n    return { isValid, errors: newErrors };\n  }, [values, rules, validateField]);\n\n  // Handle field change\n  const handleChange = useCallback(\n    (name: keyof T, value: any) => {\n      setValues(prev => ({ ...prev, [name]: value }));\n      // Clear error when user starts typing\n      if (touched[name]) {\n        const result = validateField(name, value);\n        if (result === true) {\n          setErrors(prev => {\n            const newErrors = { ...prev };\n            delete newErrors[name as string];\n            return newErrors;\n          });\n        }\n      }\n    },\n    [validateField, touched]\n  );\n\n  // Handle field blur (mark as touched)\n  const handleBlur = useCallback(\n    (name: keyof T) => {\n      setTouched(prev => ({ ...prev, [name]: true }));\n      const result = validateField(name, values[name]);\n      if (result !== true) {\n        setErrors(prev => ({\n          ...prev,\n          [name as string]: result as string\n        }));\n      }\n    },\n    [validateField, values]\n  );\n\n  // Reset form\n  const reset = useCallback(() => {\n    setValues(initialValues);\n    setErrors({});\n    setTouched({});\n  }, [initialValues]);\n\n  // Check if field is valid\n  const isValid = useCallback(\n    (name: keyof T): boolean => {\n      return errors[name as string] === undefined;\n    },\n    [errors]\n  );\n\n  // Check if field is touched\n  const isTouched = useCallback(\n    (name: keyof T): boolean => {\n      return touched[name] || false;\n    },\n    [touched]\n  );\n\n  // Get error message for a field\n  const getError = useCallback(\n    (name: keyof T): string | undefined => {\n      return errors[name as string];\n    },\n    [errors]\n  );\n\n  // Memoized validation result\n  const validationResult = useMemo(() => {\n    return { isValid: Object.keys(errors).length === 0, errors };\n  }, [errors]);\n\n  return {\n    values,\n    errors,\n    touched,\n    handleChange,\n    handleBlur,\n    validateAll,\n    reset,\n    isValid,\n    isTouched,\n    getError,\n    validationResult\n  };\n}\n\n// Custom hook for single field validation\nexport function useFieldValidation<T>(\n  value: T,\n  rules: ValidationRule<any>[],\n  isTouched: boolean = false\n) {\n  const [error, setError] = useState<string | undefined>();\n\n  const validate = useCallback(() => {\n    if (!isTouched) {\n      setError(undefined);\n      return;\n    }\n\n    for (const rule of rules) {\n      const result = rule.validate(value);\n      if (result !== true) {\n        setError(typeof result === 'string' ? result : 'Invalid value');\n        return;\n      }\n    }\n    setError(undefined);\n  }, [value, rules, isTouched]);\n\n  useEffect(() => {\n    validate();\n  }, [validate]);\n\n  return {\n    error,\n    isValid: error === undefined,\n    validate\n  };\n}\nEOF\n```",
+                "role": "assistant",
+                "tool_calls": null,
+                "function_call": null,
+                "provider_specific_fields": {
+                  "refusal": null
+                }
+              },
+              "provider_specific_fields": {}
+            }
+          ],
+          "usage": {
+            "completion_tokens": 1053,
+            "prompt_tokens": 1582,
+            "total_tokens": 2635,
+            "completion_tokens_details": null,
+            "prompt_tokens_details": null
+          },
+          "service_tier": null,
+          "stats": {}
+        }
+      }
+    },
+    {
+      "role": "user",
+      "content": "<returncode>0</returncode>\n<output>\n</output>",
+      "timestamp": 1769346362.7577698
+    },
+    {
+      "role": "assistant",
+      "content": "Now I need to create the example.tsx file that shows how to use the validation system.</think>```bash\ncat <<'EOF' > example.tsx\n/**\n * Usage Example\n * Demonstrates how to use the validation system with different forms\n */\n\nimport React, { useState } from 'react';\nimport { useValidation, validationRules, combineRules } from './validation';\n\n// Example 1: Registration Form\nexport function RegistrationForm() {\n  const [formData, setFormData] = useState({\n    email: '',\n    password: '',\n    confirmPassword: '',\n    firstName: '',\n    lastName: ''\n  });\n\n  const {\n    values,\n    errors,\n    touched,\n    handleChange,\n    handleBlur,\n    validateAll,\n    isValid,\n    reset\n  } = useValidation({\n    initialValues: formData,\n    rules: {\n      email: [\n        validationRules.required,\n        validationRules.email\n      ],\n      password: [\n        validationRules.required,\n        validationRules.minLength(8),\n        validationRules.maxLength(50)\n      ],\n      confirmPassword: [\n        validationRules.required,\n        (value: string) => value === formData.password || 'Passwords do not match'\n      ],\n      firstName: [\n        validationRules.required,\n        validationRules.minLength(2),\n        validationRules.maxLength(50)\n      ],\n      lastName: [\n        validationRules.required,\n        validationRules.minLength(2),\n        validationRules.maxLength(50)\n      ]\n    }\n  });\n\n  const handleSubmit = (e: React.FormEvent) => {\n    e.preventDefault();\n    if (validateAll().isValid) {\n      console.log('Form submitted:', values);\n      alert('Registration successful!');\n    }\n  };\n\n  return (\n    <div className=\"registration-form\">\n      <h2>Registration</h2>\n      <form onSubmit={handleSubmit}>\n        <div>\n          <label>Email</label>\n          <input\n            type=\"email\"\n            value={values.email}\n            onChange={(e) => handleChange('email', e.target.value)}\n            onBlur={() => handleBlur('email')}\n          />\n          {touched.email && errors.email && <span className=\"error\">{errors.email}</span>}\n        </div>\n\n        <div>\n          <label>Password</label>\n          <input\n            type=\"password\"\n            value={values.password}\n            onChange={(e) => handleChange('password', e.target.value)}\n            onBlur={() => handleBlur('password')}\n          />\n          {touched.password && errors.password && <span className=\"error\">{errors.password}</span>}\n        </div>\n\n        <div>\n          <label>Confirm Password</label>\n          <input\n            type=\"password\"\n            value={values.confirmPassword}\n            onChange={(e) => handleChange('confirmPassword', e.target.value)}\n            onBlur={() => handleBlur('confirmPassword')}\n          />\n          {touched.confirmPassword && errors.confirmPassword && (\n            <span className=\"error\">{errors.confirmPassword}</span>\n          )}\n        </div>\n\n        <div>\n          <label>First Name</label>\n          <input\n            type=\"text\"\n            value={values.firstName}\n            onChange={(e) => handleChange('firstName', e.target.value)}\n            onBlur={() => handleBlur('firstName')}\n          />\n          {touched.firstName && errors.firstName && <span className=\"error\">{errors.firstName}</span>}\n        </div>\n\n        <div>\n          <label>Last Name</label>\n          <input\n            type=\"text\"\n            value={values.lastName}\n            onChange={(e) => handleChange('lastName', e.target.value)}\n            onBlur={() => handleBlur('lastName')}\n          />\n          {touched.lastName && errors.lastName && <span className=\"error\">{errors.lastName}</span>}\n        </div>\n\n        <button type=\"submit\" disabled={!isValid}>\n          Register\n        </button>\n      </form>\n    </div>\n  );\n}\n\n// Example 2: Profile Settings Form\nexport function ProfileSettingsForm() {\n  const [formData, setFormData] = useState({\n    username: '',\n    bio: '',\n    website: '',\n    phone: ''\n  });\n\n  const {\n    values,\n    errors,\n    touched,\n    handleChange,\n    handleBlur,\n    isValid,\n    reset\n  } = useValidation({\n    initialValues: formData,\n    rules: {\n      username: [\n        validationRules.required,\n        validationRules.minLength(3),\n        validationRules.maxLength(20),\n        validationRules.custom(\n          (value: string) => /^[a-zA-Z0-9_]+$/.test(value),\n          'Username can only contain letters, numbers, and underscores'\n        )\n      ],\n      bio: [\n        validationRules.maxLength(200)\n      ],\n      website: [\n        validationRules.custom(\n          (value: string) => !value || /^https?:\\/\\/.+\\..+/.test(value),\n          'Please enter a valid URL'\n        )\n      ],\n      phone: [\n        validationRules.phone\n      ]\n    }\n  });\n\n  const handleSubmit = (e: React.FormEvent) => {\n    e.preventDefault();\n    if (validateAll().isValid) {\n      console.log('Profile updated:', values);\n      alert('Profile updated successfully!');\n    }\n  };\n\n  return (\n    <div className=\"profile-settings\">\n      <h2>Profile Settings</h2>\n      <form onSubmit={handleSubmit}>\n        <div>\n          <label>Username</label>\n          <input\n            type=\"text\"\n            value={values.username}\n            onChange={(e) => handleChange('username', e.target.value)}\n            onBlur={() => handleBlur('username')}\n          />\n          {touched.username && errors.username && <span className=\"error\">{errors.username}</span>}\n        </div>\n\n        <div>\n          <label>Bio</label>\n          <textarea\n            value={values.bio}\n            onChange={(e) => handleChange('bio', e.target.value)}\n            onBlur={() => handleBlur('bio')}\n          />\n          {touched.bio && errors.bio && <span className=\"error\">{errors.bio}</span>}\n        </div>\n\n        <div>\n          <label>Website</label>\n          <input\n            type=\"url\"\n            value={values.website}\n            onChange={(e) => handleChange('website', e.target.value)}\n            onBlur={() => handleBlur('website')}\n          />\n          {touched.website && errors.website && <span className=\"error\">{errors.website}</span>}\n        </div>\n\n        <div>\n          <label>Phone</label>\n          <input\n            type=\"tel\"\n            value={values.phone}\n            onChange={(e) => handleChange('phone', e.target.value)}\n            onBlur={() => handleBlur('phone')}\n          />\n          {touched.phone && errors.phone && <span className=\"error\">{errors.phone}</span>}\n        </div>\n\n        <button type=\"submit\" disabled={!isValid}>\n          Save Changes\n        </button>\n      </form>\n    </div>\n  );\n}\n\n// Example 3: Checkout Form with Custom Rules\nexport function CheckoutForm() {\n  const [formData, setFormData] = useState({\n    cardNumber: '',\n    cardName: '',\n    expiry: '',\n    cvv: '',\n    address: '',\n    city: '',\n    zipCode: ''\n  });\n\n  const {\n    values,\n    errors,\n    touched,\n    handleChange,\n    handleBlur,\n    validateAll,\n    isValid,\n    reset\n  } = useValidation({\n    initialValues: formData,\n    rules: {\n      cardNumber: [\n        validationRules.required,\n        validationRules.custom(\n          (value: string) => /^\\d{16}$/.test(value.replace(/\\s/g, '')),\n          'Please enter a valid 16-digit card number'\n        )\n      ],\n      cardName: [\n        validationRules.required,\n        validationRules.minLength(2)\n      ],\n      expiry: [\n        validationRules.required,\n        validationRules.custom(\n          (value: string) => /^(0[1-9]|1[0-2])\\/\\d{2}$/.test(value),\n          'Please enter a valid expiry date (MM/YY)'\n        )\n      ],\n      cvv: [\n        validationRules.required,\n        validationRules.custom(\n          (value: string) => /^\\d{3,4}$/.test(value),\n          'Please enter a valid CVV'\n        )\n      ],\n      address: [\n        validationRules.required,\n        validationRules.minLength(5)\n      ],\n      city: [\n        validationRules.required,\n        validationRules.minLength(2)\n      ],\n      zipCode: [\n        validationRules.required,\n        validationRules.custom(\n          (value: string) => /^\\d{5}(-\\d{4})?$/.test(value),\n          'Please enter a valid ZIP code'\n        )\n      ]\n    }\n  });\n\n  const handleSubmit = (e: React.FormEvent) => {\n    e.preventDefault();\n    if (validateAll().isValid) {\n      console.log('Checkout submitted:', values);\n      alert('Order placed successfully!');\n    }\n  };\n\n  return (\n    <div className=\"checkout-form\">\n      <h2>Checkout</h2>\n      <form onSubmit={handleSubmit}>\n        <div>\n          <label>Card Number</label>\n          <input\n            type=\"text\"\n            value={values.cardNumber}\n            onChange={(e) => handleChange('cardNumber', e.target.value)}\n            onBlur={() => handleBlur('cardNumber')}\n          />\n          {touched.cardNumber && errors.cardNumber && <span className=\"error\">{errors.cardNumber}</span>}\n        </div>\n\n        <div>\n          <label>Card Name</label>\n          <input\n            type=\"text\"\n            value={values.cardName}\n            onChange={(e) => handleChange('cardName', e.target.value)}\n            onBlur={() => handleBlur('cardName')}\n          />\n          {touched.cardName && errors.cardName && <span className=\"error\">{errors.cardName}</span>}\n        </div>\n\n        <div>\n          <label>Expiry Date</label>\n          <input\n            type=\"text\"\n            value={values.expiry}\n            onChange={(e) => handleChange('expiry', e.target.value)}\n            onBlur={() => handleBlur('expiry')}\n            placeholder=\"MM/YY\"\n          />\n          {touched.expiry && errors.expiry && <span className=\"error\">{errors.expiry}</span>}\n        </div>\n\n        <div>\n          <label>CVV</label>\n          <input\n            type=\"text\"\n            value={values.cvv}\n            onChange={(e) => handleChange('cvv', e.target.value)}\n            onBlur={() => handleBlur('cvv')}\n          />\n          {touched.cvv && errors.cvv && <span className=\"error\">{errors.cvv}</span>}\n        </div>\n\n        <div>\n          <label>Address</label>\n          <input\n            type=\"text\"\n            value={values.address}\n            onChange={(e) => handleChange('address', e.target.value)}\n            onBlur={() => handleBlur('address')}\n          />\n          {touched.address && errors.address && <span className=\"error\">{errors.address}</span>}\n        </div>\n\n        <div>\n          <label>City</label>\n          <input\n            type=\"text\"\n            value={values.city}\n            onChange={(e) => handleChange('city', e.target.value)}\n            onBlur={() => handleBlur('city')}\n          />\n          {touched.city && errors.city && <span className=\"error\">{errors.city}</span>}\n        </div>\n\n        <div>\n          <label>ZIP Code</label>\n          <input\n            type=\"text\"\n            value={values.zipCode}\n            onChange={(e) => handleChange('zipCode', e.target.value)}\n            onBlur={() => handleBlur('zipCode')}\n          />\n          {touched.zipCode && errors.zipCode && <span className=\"error\">{errors.zipCode}</span>}\n        </div>\n\n        <button type=\"submit\" disabled={!isValid}>\n          Place Order\n        </button>\n      </form>\n    </div>\n  );\n}\n\n// Example 4: Adding Custom Rules\nexport function CustomValidationExample() {\n  const [formData, setFormData] = useState({\n    username: '',\n    age: ''\n  });\n\n  // Define custom rules\n  const customRules = {\n    // Strong password rule\n    strongPassword: (value: string): boolean | string => {\n      const hasUpperCase = /[A-Z]/.test(value);\n      const hasLowerCase = /[a-z]/.test(value);\n      const hasNumbers = /\\d/.test(value);\n      const hasSpecialChar = /[!@#$%^&*(),.?\":{}|<>]/.test(value);\n\n      if (!hasUpperCase || !hasLowerCase || !hasNumbers || !hasSpecialChar) {\n        return 'Password must contain uppercase, lowercase, numbers, and special characters';\n      }\n      return true;\n    },\n\n    // Age validation\n    ageRange: (value: number): boolean | string => {\n      if (value < 18) {\n        return 'You must be at least 18 years old';\n      }\n      if (value > 120) {\n        return 'Please enter a valid age';\n      }\n      return true;\n    }\n  };\n\n  const {\n    values,\n    errors,\n    touched,\n    handleChange,\n    handleBlur,\n    isValid,\n    reset\n  } = useValidation({\n    initialValues: formData,\n    rules: {\n      username: [\n        validationRules.required,\n        validationRules.minLength(3),\n        validationRules.maxLength(20),\n        validationRules.custom(\n          customRules.strongPassword,\n          'Password must meet complexity requirements'\n        )\n      ],\n      age: [\n        validationRules.required,\n        validationRules.custom(customRules.ageRange)\n      ]\n    }\n  });\n\n  const handleSubmit = (e: React.FormEvent) => {\n    e.preventDefault();\n    if (validateAll().isValid) {\n      console.log('Custom validation submitted:', values);\n      alert('Custom validation passed!');\n    }\n  };\n\n  return (\n    <div className=\"custom-validation\">\n      <h2>Custom Validation Example</h2>\n      <form onSubmit={handleSubmit}>\n        <div>\n          <label>Username (must have strong password)</label>\n          <input\n            type=\"text\"\n            value={values.username}\n            onChange={(e) => handleChange('username', e.target.value)}\n            onBlur={() => handleBlur('username')}\n          />\n          {touched.username && errors.username && <span className=\"error\">{errors.username}</span>}\n        </div>\n\n        <div>\n          <label>Age</label>\n          <input\n            type=\"number\"\n            value={values.age}\n            onChange={(e) => handleChange('age', parseInt(e.target.value))}\n            onBlur={() => handleBlur('age')}\n          />\n          {touched.age && errors.age && <span className=\"error\">{errors.age}</span>}\n        </div>\n\n        <button type=\"submit\" disabled={!isValid}>\n          Validate\n        </button>\n      </form>\n    </div>\n  );\n}\nEOF\n```",
+      "timestamp": 1769346985.8833911,
+      "extra": {
+        "response": {
+          "id": "chatcmpl-y70366nrcum7lkm2cdeydy",
+          "created": 1769346362,
+          "model": "glm-4.7-flash",
+          "object": "chat.completion",
+          "system_fingerprint": "glm-4.7-flash",
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "message": {
+                "content": "Now I need to create the example.tsx file that shows how to use the validation system.</think>```bash\ncat <<'EOF' > example.tsx\n/**\n * Usage Example\n * Demonstrates how to use the validation system with different forms\n */\n\nimport React, { useState } from 'react';\nimport { useValidation, validationRules, combineRules } from './validation';\n\n// Example 1: Registration Form\nexport function RegistrationForm() {\n  const [formData, setFormData] = useState({\n    email: '',\n    password: '',\n    confirmPassword: '',\n    firstName: '',\n    lastName: ''\n  });\n\n  const {\n    values,\n    errors,\n    touched,\n    handleChange,\n    handleBlur,\n    validateAll,\n    isValid,\n    reset\n  } = useValidation({\n    initialValues: formData,\n    rules: {\n      email: [\n        validationRules.required,\n        validationRules.email\n      ],\n      password: [\n        validationRules.required,\n        validationRules.minLength(8),\n        validationRules.maxLength(50)\n      ],\n      confirmPassword: [\n        validationRules.required,\n        (value: string) => value === formData.password || 'Passwords do not match'\n      ],\n      firstName: [\n        validationRules.required,\n        validationRules.minLength(2),\n        validationRules.maxLength(50)\n      ],\n      lastName: [\n        validationRules.required,\n        validationRules.minLength(2),\n        validationRules.maxLength(50)\n      ]\n    }\n  });\n\n  const handleSubmit = (e: React.FormEvent) => {\n    e.preventDefault();\n    if (validateAll().isValid) {\n      console.log('Form submitted:', values);\n      alert('Registration successful!');\n    }\n  };\n\n  return (\n    <div className=\"registration-form\">\n      <h2>Registration</h2>\n      <form onSubmit={handleSubmit}>\n        <div>\n          <label>Email</label>\n          <input\n            type=\"email\"\n            value={values.email}\n            onChange={(e) => handleChange('email', e.target.value)}\n            onBlur={() => handleBlur('email')}\n          />\n          {touched.email && errors.email && <span className=\"error\">{errors.email}</span>}\n        </div>\n\n        <div>\n          <label>Password</label>\n          <input\n            type=\"password\"\n            value={values.password}\n            onChange={(e) => handleChange('password', e.target.value)}\n            onBlur={() => handleBlur('password')}\n          />\n          {touched.password && errors.password && <span className=\"error\">{errors.password}</span>}\n        </div>\n\n        <div>\n          <label>Confirm Password</label>\n          <input\n            type=\"password\"\n            value={values.confirmPassword}\n            onChange={(e) => handleChange('confirmPassword', e.target.value)}\n            onBlur={() => handleBlur('confirmPassword')}\n          />\n          {touched.confirmPassword && errors.confirmPassword && (\n            <span className=\"error\">{errors.confirmPassword}</span>\n          )}\n        </div>\n\n        <div>\n          <label>First Name</label>\n          <input\n            type=\"text\"\n            value={values.firstName}\n            onChange={(e) => handleChange('firstName', e.target.value)}\n            onBlur={() => handleBlur('firstName')}\n          />\n          {touched.firstName && errors.firstName && <span className=\"error\">{errors.firstName}</span>}\n        </div>\n\n        <div>\n          <label>Last Name</label>\n          <input\n            type=\"text\"\n            value={values.lastName}\n            onChange={(e) => handleChange('lastName', e.target.value)}\n            onBlur={() => handleBlur('lastName')}\n          />\n          {touched.lastName && errors.lastName && <span className=\"error\">{errors.lastName}</span>}\n        </div>\n\n        <button type=\"submit\" disabled={!isValid}>\n          Register\n        </button>\n      </form>\n    </div>\n  );\n}\n\n// Example 2: Profile Settings Form\nexport function ProfileSettingsForm() {\n  const [formData, setFormData] = useState({\n    username: '',\n    bio: '',\n    website: '',\n    phone: ''\n  });\n\n  const {\n    values,\n    errors,\n    touched,\n    handleChange,\n    handleBlur,\n    isValid,\n    reset\n  } = useValidation({\n    initialValues: formData,\n    rules: {\n      username: [\n        validationRules.required,\n        validationRules.minLength(3),\n        validationRules.maxLength(20),\n        validationRules.custom(\n          (value: string) => /^[a-zA-Z0-9_]+$/.test(value),\n          'Username can only contain letters, numbers, and underscores'\n        )\n      ],\n      bio: [\n        validationRules.maxLength(200)\n      ],\n      website: [\n        validationRules.custom(\n          (value: string) => !value || /^https?:\\/\\/.+\\..+/.test(value),\n          'Please enter a valid URL'\n        )\n      ],\n      phone: [\n        validationRules.phone\n      ]\n    }\n  });\n\n  const handleSubmit = (e: React.FormEvent) => {\n    e.preventDefault();\n    if (validateAll().isValid) {\n      console.log('Profile updated:', values);\n      alert('Profile updated successfully!');\n    }\n  };\n\n  return (\n    <div className=\"profile-settings\">\n      <h2>Profile Settings</h2>\n      <form onSubmit={handleSubmit}>\n        <div>\n          <label>Username</label>\n          <input\n            type=\"text\"\n            value={values.username}\n            onChange={(e) => handleChange('username', e.target.value)}\n            onBlur={() => handleBlur('username')}\n          />\n          {touched.username && errors.username && <span className=\"error\">{errors.username}</span>}\n        </div>\n\n        <div>\n          <label>Bio</label>\n          <textarea\n            value={values.bio}\n            onChange={(e) => handleChange('bio', e.target.value)}\n            onBlur={() => handleBlur('bio')}\n          />\n          {touched.bio && errors.bio && <span className=\"error\">{errors.bio}</span>}\n        </div>\n\n        <div>\n          <label>Website</label>\n          <input\n            type=\"url\"\n            value={values.website}\n            onChange={(e) => handleChange('website', e.target.value)}\n            onBlur={() => handleBlur('website')}\n          />\n          {touched.website && errors.website && <span className=\"error\">{errors.website}</span>}\n        </div>\n\n        <div>\n          <label>Phone</label>\n          <input\n            type=\"tel\"\n            value={values.phone}\n            onChange={(e) => handleChange('phone', e.target.value)}\n            onBlur={() => handleBlur('phone')}\n          />\n          {touched.phone && errors.phone && <span className=\"error\">{errors.phone}</span>}\n        </div>\n\n        <button type=\"submit\" disabled={!isValid}>\n          Save Changes\n        </button>\n      </form>\n    </div>\n  );\n}\n\n// Example 3: Checkout Form with Custom Rules\nexport function CheckoutForm() {\n  const [formData, setFormData] = useState({\n    cardNumber: '',\n    cardName: '',\n    expiry: '',\n    cvv: '',\n    address: '',\n    city: '',\n    zipCode: ''\n  });\n\n  const {\n    values,\n    errors,\n    touched,\n    handleChange,\n    handleBlur,\n    validateAll,\n    isValid,\n    reset\n  } = useValidation({\n    initialValues: formData,\n    rules: {\n      cardNumber: [\n        validationRules.required,\n        validationRules.custom(\n          (value: string) => /^\\d{16}$/.test(value.replace(/\\s/g, '')),\n          'Please enter a valid 16-digit card number'\n        )\n      ],\n      cardName: [\n        validationRules.required,\n        validationRules.minLength(2)\n      ],\n      expiry: [\n        validationRules.required,\n        validationRules.custom(\n          (value: string) => /^(0[1-9]|1[0-2])\\/\\d{2}$/.test(value),\n          'Please enter a valid expiry date (MM/YY)'\n        )\n      ],\n      cvv: [\n        validationRules.required,\n        validationRules.custom(\n          (value: string) => /^\\d{3,4}$/.test(value),\n          'Please enter a valid CVV'\n        )\n      ],\n      address: [\n        validationRules.required,\n        validationRules.minLength(5)\n      ],\n      city: [\n        validationRules.required,\n        validationRules.minLength(2)\n      ],\n      zipCode: [\n        validationRules.required,\n        validationRules.custom(\n          (value: string) => /^\\d{5}(-\\d{4})?$/.test(value),\n          'Please enter a valid ZIP code'\n        )\n      ]\n    }\n  });\n\n  const handleSubmit = (e: React.FormEvent) => {\n    e.preventDefault();\n    if (validateAll().isValid) {\n      console.log('Checkout submitted:', values);\n      alert('Order placed successfully!');\n    }\n  };\n\n  return (\n    <div className=\"checkout-form\">\n      <h2>Checkout</h2>\n      <form onSubmit={handleSubmit}>\n        <div>\n          <label>Card Number</label>\n          <input\n            type=\"text\"\n            value={values.cardNumber}\n            onChange={(e) => handleChange('cardNumber', e.target.value)}\n            onBlur={() => handleBlur('cardNumber')}\n          />\n          {touched.cardNumber && errors.cardNumber && <span className=\"error\">{errors.cardNumber}</span>}\n        </div>\n\n        <div>\n          <label>Card Name</label>\n          <input\n            type=\"text\"\n            value={values.cardName}\n            onChange={(e) => handleChange('cardName', e.target.value)}\n            onBlur={() => handleBlur('cardName')}\n          />\n          {touched.cardName && errors.cardName && <span className=\"error\">{errors.cardName}</span>}\n        </div>\n\n        <div>\n          <label>Expiry Date</label>\n          <input\n            type=\"text\"\n            value={values.expiry}\n            onChange={(e) => handleChange('expiry', e.target.value)}\n            onBlur={() => handleBlur('expiry')}\n            placeholder=\"MM/YY\"\n          />\n          {touched.expiry && errors.expiry && <span className=\"error\">{errors.expiry}</span>}\n        </div>\n\n        <div>\n          <label>CVV</label>\n          <input\n            type=\"text\"\n            value={values.cvv}\n            onChange={(e) => handleChange('cvv', e.target.value)}\n            onBlur={() => handleBlur('cvv')}\n          />\n          {touched.cvv && errors.cvv && <span className=\"error\">{errors.cvv}</span>}\n        </div>\n\n        <div>\n          <label>Address</label>\n          <input\n            type=\"text\"\n            value={values.address}\n            onChange={(e) => handleChange('address', e.target.value)}\n            onBlur={() => handleBlur('address')}\n          />\n          {touched.address && errors.address && <span className=\"error\">{errors.address}</span>}\n        </div>\n\n        <div>\n          <label>City</label>\n          <input\n            type=\"text\"\n            value={values.city}\n            onChange={(e) => handleChange('city', e.target.value)}\n            onBlur={() => handleBlur('city')}\n          />\n          {touched.city && errors.city && <span className=\"error\">{errors.city}</span>}\n        </div>\n\n        <div>\n          <label>ZIP Code</label>\n          <input\n            type=\"text\"\n            value={values.zipCode}\n            onChange={(e) => handleChange('zipCode', e.target.value)}\n            onBlur={() => handleBlur('zipCode')}\n          />\n          {touched.zipCode && errors.zipCode && <span className=\"error\">{errors.zipCode}</span>}\n        </div>\n\n        <button type=\"submit\" disabled={!isValid}>\n          Place Order\n        </button>\n      </form>\n    </div>\n  );\n}\n\n// Example 4: Adding Custom Rules\nexport function CustomValidationExample() {\n  const [formData, setFormData] = useState({\n    username: '',\n    age: ''\n  });\n\n  // Define custom rules\n  const customRules = {\n    // Strong password rule\n    strongPassword: (value: string): boolean | string => {\n      const hasUpperCase = /[A-Z]/.test(value);\n      const hasLowerCase = /[a-z]/.test(value);\n      const hasNumbers = /\\d/.test(value);\n      const hasSpecialChar = /[!@#$%^&*(),.?\":{}|<>]/.test(value);\n\n      if (!hasUpperCase || !hasLowerCase || !hasNumbers || !hasSpecialChar) {\n        return 'Password must contain uppercase, lowercase, numbers, and special characters';\n      }\n      return true;\n    },\n\n    // Age validation\n    ageRange: (value: number): boolean | string => {\n      if (value < 18) {\n        return 'You must be at least 18 years old';\n      }\n      if (value > 120) {\n        return 'Please enter a valid age';\n      }\n      return true;\n    }\n  };\n\n  const {\n    values,\n    errors,\n    touched,\n    handleChange,\n    handleBlur,\n    isValid,\n    reset\n  } = useValidation({\n    initialValues: formData,\n    rules: {\n      username: [\n        validationRules.required,\n        validationRules.minLength(3),\n        validationRules.maxLength(20),\n        validationRules.custom(\n          customRules.strongPassword,\n          'Password must meet complexity requirements'\n        )\n      ],\n      age: [\n        validationRules.required,\n        validationRules.custom(customRules.ageRange)\n      ]\n    }\n  });\n\n  const handleSubmit = (e: React.FormEvent) => {\n    e.preventDefault();\n    if (validateAll().isValid) {\n      console.log('Custom validation submitted:', values);\n      alert('Custom validation passed!');\n    }\n  };\n\n  return (\n    <div className=\"custom-validation\">\n      <h2>Custom Validation Example</h2>\n      <form onSubmit={handleSubmit}>\n        <div>\n          <label>Username (must have strong password)</label>\n          <input\n            type=\"text\"\n            value={values.username}\n            onChange={(e) => handleChange('username', e.target.value)}\n            onBlur={() => handleBlur('username')}\n          />\n          {touched.username && errors.username && <span className=\"error\">{errors.username}</span>}\n        </div>\n\n        <div>\n          <label>Age</label>\n          <input\n            type=\"number\"\n            value={values.age}\n            onChange={(e) => handleChange('age', parseInt(e.target.value))}\n            onBlur={() => handleBlur('age')}\n          />\n          {touched.age && errors.age && <span className=\"error\">{errors.age}</span>}\n        </div>\n\n        <button type=\"submit\" disabled={!isValid}>\n          Validate\n        </button>\n      </form>\n    </div>\n  );\n}\nEOF\n```",
+                "role": "assistant",
+                "tool_calls": null,
+                "function_call": null,
+                "provider_specific_fields": {
+                  "refusal": null
+                }
+              },
+              "provider_specific_fields": {}
+            }
+          ],
+          "usage": {
+            "completion_tokens": 3086,
+            "prompt_tokens": 2651,
+            "total_tokens": 5737,
+            "completion_tokens_details": null,
+            "prompt_tokens_details": null
+          },
+          "service_tier": null,
+          "stats": {}
+        }
+      }
+    },
+    {
+      "role": "user",
+      "content": "<returncode>0</returncode>\n<output>\n</output>",
+      "timestamp": 1769346985.893831
+    },
+    {
+      "role": "assistant",
+      "content": "Now I should verify that all files have been created correctly by listing the directory contents.</think>```bash\nls -la\n```",
+      "timestamp": 1769346993.3271883,
+      "extra": {
+        "response": {
+          "id": "chatcmpl-3v1jteplk3ynh0o3hcgu2",
+          "created": 1769346986,
+          "model": "glm-4.7-flash",
+          "object": "chat.completion",
+          "system_fingerprint": "glm-4.7-flash",
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "message": {
+                "content": "Now I should verify that all files have been created correctly by listing the directory contents.</think>```bash\nls -la\n```",
+                "role": "assistant",
+                "tool_calls": null,
+                "function_call": null,
+                "provider_specific_fields": {
+                  "refusal": null
+                }
+              },
+              "provider_specific_fields": {}
+            }
+          ],
+          "usage": {
+            "completion_tokens": 27,
+            "prompt_tokens": 5754,
+            "total_tokens": 5781,
+            "completion_tokens_details": null,
+            "prompt_tokens_details": null
+          },
+          "service_tier": null,
+          "stats": {}
+        }
+      }
+    },
+    {
+      "role": "user",
+      "content": "<returncode>0</returncode>\n<output>\ntotal 76\ndrwxr-xr-x  2 anc13nt anc13nt  4096 Jan 25 16:16 .\ndrwxr-xr-x 13 anc13nt anc13nt  4096 Jan 25 16:02 ..\n-rw-r--r--  1 anc13nt anc13nt  3561 Jan 25 16:02 .mini_config.yaml\n-rw-r--r--  1 anc13nt anc13nt   615 Jan 25 16:02 TASK.md\n-rw-r--r--  1 anc13nt anc13nt 13883 Jan 25 16:16 example.tsx\n-rw-r--r--  1 anc13nt anc13nt 28948 Jan 25 16:16 run_log.txt\n-rw-r--r--  1 anc13nt anc13nt  4324 Jan 25 16:06 useValidation.ts\n-rw-r--r--  1 anc13nt anc13nt  2786 Jan 25 16:03 validation.ts\n</output>",
+      "timestamp": 1769346993.331323
+    },
+    {
+      "role": "assistant",
+      "content": "Good! All three required files have been created:\n1. validation.ts - Validation types and rules\n2. useValidation.ts - The useValidation hook\n3. example.tsx - Usage examples\n\nNow I should submit the task as requested.</think>```bash\necho COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT\n```",
+      "timestamp": 1769347015.651071,
+      "extra": {
+        "response": {
+          "id": "chatcmpl-ezf9nqsy7zw4rnnp9hicuh",
+          "created": 1769346994,
+          "model": "glm-4.7-flash",
+          "object": "chat.completion",
+          "system_fingerprint": "glm-4.7-flash",
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "message": {
+                "content": "Good! All three required files have been created:\n1. validation.ts - Validation types and rules\n2. useValidation.ts - The useValidation hook\n3. example.tsx - Usage examples\n\nNow I should submit the task as requested.</think>```bash\necho COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT\n```",
+                "role": "assistant",
+                "tool_calls": null,
+                "function_call": null,
+                "provider_specific_fields": {
+                  "refusal": null
+                }
+              },
+              "provider_specific_fields": {}
+            }
+          ],
+          "usage": {
+            "completion_tokens": 64,
+            "prompt_tokens": 6038,
+            "total_tokens": 6102,
+            "completion_tokens_details": null,
+            "prompt_tokens_details": null
+          },
+          "service_tier": null,
+          "stats": {}
+        }
+      }
+    },
+    {
+      "role": "user",
+      "content": "",
+      "timestamp": 1769347015.6530678
+    }
+  ],
+  "trajectory_format": "mini-swe-agent-1"
+}

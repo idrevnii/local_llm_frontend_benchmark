@@ -1,0 +1,38 @@
+import { useState, useEffect } from 'react';
+
+/**
+ * Custom hook for persisting state in localStorage
+ * @param key - localStorage key
+ * @param initialValue - default value if nothing in storage
+ */
+export function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T) => void] {
+    // Initialize state with value from localStorage or initialValue
+    const [storedValue, setStoredValue] = useState<T>(() => {
+        try {
+            const item = window.localStorage.getItem(key);
+            // Parse stored json or return initialValue
+            return item ? JSON.parse(item, (key, value) => {
+                // Fix: Convert stringified Date objects back to Date objects
+                if (typeof value === 'string' && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/.test(value)) {
+                    return new Date(value);
+                }
+                return value;
+            }) : initialValue;
+        } catch (error) {
+            console.error(`Error reading localStorage key "${key}":`, error);
+            return initialValue;
+        }
+    });
+
+    // Update localStorage when state changes
+    const setValue = (value: T) => {
+        try {
+            setStoredValue(value);
+            window.localStorage.setItem(key, JSON.stringify(value));
+        } catch (error) {
+            console.error(`Error setting localStorage key "${key}":`, error);
+        }
+    };
+
+    return [storedValue, setValue];
+}

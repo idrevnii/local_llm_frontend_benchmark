@@ -8,7 +8,7 @@
 |--------|-----------|-------------------|---------------------|
 | [GLM-4.7-Flash](https://huggingface.co/zai-org/GLM-4.7-Flash) | 30B-A3B (MoE) | SWE-bench Verified, Terminal Bench 2 | GPU с поддержкой vLLM/SGLang |
 | [RNJ-1](https://huggingface.co/EssentialAI/rnj-1) | 8B | SWE-bench 20.8%, HumanEval+ | MacBook M4 16GB |
-| [Qwen3-4B-Thinking](https://huggingface.co/Qwen/Qwen3-4B-Thinking-2507) | 4B | AIME 81.3%, HumanEval ~88% | 8-16GB RAM |
+| [jan-v3-4b-base-instruct](https://huggingface.co/janhq/jan-v3-4b-base-instruct) | 4B | Комбинированный подход | 8-16GB RAM |
 
 ## Структура проекта
 
@@ -90,6 +90,19 @@ local_llm_benchmark/
 | **Общий балл** | **7.80/10** | |
 
 Подробные результаты: [results/rnj-1-instruct-mlx/result_all.md](results/rnj-1-instruct-mlx/result_all.md)
+
+### jan-v3-4b-base-instruct (4B) — Протестировано
+
+| Уровень | Средний балл | Статус |
+|---------|-------------|--------|
+| Level 1 (Easy) | 9.67/10 ⭐ | Отлично |
+| Level 2 (Medium) | 8.6/10 | Хорошо |
+| Level 3 (Hard) | 5.0/10 ❌ | Провал |
+| Level 4 (Expert) | 4.0/10 ❌ | Провал |
+| Level 5 (Nightmare) | 4.83/10 ❌ | Провал |
+| **Общий балл** | **6.25/10** | |
+
+Подробные результаты: [results/jan-v3-4b-base-instruct/result_all.md](results/jan-v3-4b-base-instruct/result_all.md)
 
 ## Запуск
 

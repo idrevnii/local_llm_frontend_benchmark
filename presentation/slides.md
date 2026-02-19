@@ -684,6 +684,10 @@ layout: statement
 Спасибо за внимание
 </div>
 
+<div style="display: flex; justify-content: center;">
+<img src="/image.png" style="margin-top: 24px; max-height: 200px;" />
+</div>
+
 <!--
 Финальный слайд.
 -->

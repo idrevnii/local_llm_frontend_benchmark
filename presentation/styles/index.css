@@ -1,0 +1,297 @@
+/* ==========================================
+   GLOBAL STYLES — Premium "Dev" Aesthetic
+   ========================================== */
+
+/* ---- Fonts & Core ---- */
+:root {
+  --jan-color: #f59e0b;
+  /* Amber 500 */
+  --jan-bg: rgba(254, 243, 199, 0.6);
+  --rnj-color: #3b82f6;
+  /* Blue 500 */
+  --rnj-bg: rgba(219, 234, 254, 0.6);
+  --glm-color: #10b981;
+  /* Emerald 500 */
+  --glm-bg: rgba(209, 250, 229, 0.6);
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --bg-gradient: radial-gradient(circle at 50% 0%, #f1f5f9 0%, #e2e8f0 100%);
+}
+
+.slidev-layout {
+  background: #f8fafc;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(16, 185, 129, 0.05) 0px, transparent 50%);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: #0f172a;
+}
+
+/* ---- PREMIUM CARDS (Glassmorphism) ---- */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+/* ---- MODEL BADGES ---- */
+.model-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 99px;
+  font-size: 0.75em;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.model-badge.jan {
+  background: #fffbeb;
+  color: #b45309;
+  border: 1px solid #fcd34d;
+}
+
+.model-badge.rnj {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #93c5fd;
+}
+
+.model-badge.glm {
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #6ee7b7;
+}
+
+/* ---- LEVEL BADGES ---- */
+.level-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.65em;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-right: 6px;
+  border: 1px solid transparent;
+}
+
+.level-badge.easy {
+  background: #ecfdf5;
+  color: #047857;
+  border-color: #a7f3d0;
+}
+
+.level-badge.medium {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-color: #bfdbfe;
+}
+
+.level-badge.hard {
+  background: #fffbeb;
+  color: #b45309;
+  border-color: #fde68a;
+}
+
+.level-badge.expert {
+  background: #fef2f2;
+  color: #b91c1c;
+  border-color: #fecaca;
+}
+
+.level-badge.nightmare {
+  background: #450a0a;
+  color: #fecaca;
+  border-color: #7f1d1d;
+  box-shadow: 0 0 8px rgba(220, 38, 38, 0.3);
+}
+
+/* ---- STAT GRID ---- */
+.stat-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.stat-grid.cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.stat-item {
+  text-align: center;
+  padding: 24px 16px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+}
+
+.stat-item:hover {
+  transform: translateY(-2px);
+}
+
+.stat-item .stat-value {
+  font-size: 2.5em;
+  /* Bigger */
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-item .stat-label {
+  font-size: 0.8em;
+  font-weight: 600;
+  color: #64748b;
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ---- CONFIG CARDS ---- */
+.config-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 18px 22px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  height: 100%;
+}
+
+/* ---- SHAME CARD ---- */
+.shame-card {
+  background: #fff1f2;
+  border-left: 4px solid #f43f5e;
+  border-radius: 0 12px 12px 0;
+  padding: 16px 20px;
+  margin-top: 16px;
+  color: #881337;
+}
+
+/* ---- REC CARD ---- */
+.rec-card {
+  padding: 16px 20px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  margin-bottom: 12px;
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s;
+}
+
+.rec-card h4 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.1em;
+}
+
+.rec-card.jan {
+  border-left: 4px solid #f59e0b;
+}
+
+.rec-card.rnj {
+  border-left: 4px solid #3b82f6;
+}
+
+.rec-card.glm {
+  border-left: 4px solid #10b981;
+}
+
+/* ---- TABLE STYLES ---- */
+.slidev-layout table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.8em;
+  /* Reduced size */
+}
+
+.slidev-layout table th {
+  padding: 8px 10px;
+  /* Tighter padding */
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  font-size: 0.7em;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.slidev-layout table td {
+  padding: 8px 10px;
+  /* Tighter padding */
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+}
+
+.slidev-layout table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ---- WINNER ---- */
+.winner {
+  background: radial-gradient(circle, #fcd34d 0%, #f59e0b 100%);
+  color: #78350f;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 800;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  margin-left: 6px;
+  box-shadow: 0 2px 4px rgba(245, 158, 11, 0.3);
+}
+
+/* ---- UTILS ---- */
+.text-sm {
+  font-size: 0.75em;
+  /* Smaller text-sm */
+  line-height: 1.4;
+}
+
+.op-60 {
+  opacity: 0.6;
+}
+
+.op-80 {
+  opacity: 0.8;
+}
+
+.font-mono {
+  font-family: 'Fira Code', monospace;
+}
+
+/* ---- Highlight Box ---- */
+.highlight-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #6366f1;
+  padding: 14px 18px;
+  /* Slightly tighter */
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
